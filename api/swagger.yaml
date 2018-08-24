@@ -1,0 +1,337 @@
+---
+swagger: "2.0"
+info:
+  description: "An API for the NEED HOU Database"
+  version: "1.0.0"
+  title: "NeedHOU API"
+basePath: "/api"
+schemes:
+- "https"
+consumes:
+- "application/json"
+produces:
+- "application/json"
+paths:
+  /queue:
+    get:
+      description: "Get queue"
+      operationId: "findQueue"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "Queue returned"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "Default"
+    post:
+      description: "Add item to queue"
+      operationId: "createQueue"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "queue_data"
+        description: "data for new program to be added to queue"
+        required: true
+        schema:
+          $ref: "#/definitions/QueueModel"
+      responses:
+        200:
+          description: "Program succesfully created"
+        409:
+          description: "Program already exists"
+          schema:
+            $ref: "#/definitions/Error"
+      x-swagger-router-controller: "Default"
+  /languages:
+    get:
+      description: "Get program langauges"
+      operationId: "findLanguages"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "program_id"
+        in: "query"
+        description: "Filter by program id"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "Language succesfully filtered by program_id"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "Default"
+    post:
+      description: "Create program languages"
+      operationId: "createLanguages"
+      consumes:
+      - "application/x-www-form-urlencoded"
+      parameters:
+      - in: "body"
+        name: "language_data"
+        description: "data for new language"
+        required: true
+        schema:
+          $ref: "#/definitions/LanguageModel"
+      responses:
+        200:
+          description: "Languages succesfully created"
+      x-swagger-router-controller: "Default"
+  /programs:
+    get:
+      description: "Get programs"
+      operationId: "findPrograms"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "agency_id"
+        in: "query"
+        description: "Filter by agency id"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "Programs succesfully filtered by agency_id"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "Default"
+    post:
+      description: "Create new program"
+      operationId: "createProgram"
+      consumes:
+      - "application/x-www-form-urlencoded"
+      parameters:
+      - in: "body"
+        name: "program_data"
+        description: "data for new program"
+        required: true
+        schema:
+          $ref: "#/definitions/ProgramModel"
+      responses:
+        200:
+          description: "Program succesfully created"
+        409:
+          description: "Program already exists"
+          schema:
+            $ref: "#/definitions/Error"
+      x-swagger-router-controller: "Default"
+    put:
+      description: "Update program"
+      operationId: "updateProgram"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Updated program object"
+        required: true
+        schema:
+          $ref: "#/definitions/ProgramModel"
+      responses:
+        200:
+          description: "Program succesfully updated"
+        404:
+          description: "Program not found"
+          schema:
+            $ref: "#/definitions/Error"
+      x-swagger-router-controller: "Default"
+  /agencies:
+    get:
+      description: "Get agencies"
+      operationId: "findAgencies"
+      consumes:
+      - "application/x-www-form-urlencoded"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "name"
+        in: "query"
+        description: "Filter by agency name"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "Agencies succesfully searched"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "Default"
+    post:
+      description: "Create an agency"
+      operationId: "createAgency"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "agency_data"
+        description: "data for new agency"
+        required: true
+        schema:
+          $ref: "#/definitions/AgencyModel"
+      responses:
+        200:
+          description: "Agency succesfully created"
+        409:
+          description: "Agency already exists"
+          schema:
+            $ref: "#/definitions/Error"
+      x-swagger-router-controller: "Default"
+    put:
+      description: "Update agency"
+      operationId: "updateAgency"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Updated agency object"
+        required: true
+        schema:
+          $ref: "#/definitions/AgencyModel"
+      responses:
+        200:
+          description: "Agency succesfully updated"
+        404:
+          description: "Agency not found"
+          schema:
+            $ref: "#/definitions/Error"
+      x-swagger-router-controller: "Default"
+definitions:
+  Error:
+    type: "object"
+    required:
+    - "code"
+    - "message"
+    properties:
+      code:
+        type: "string"
+      message:
+        type: "string"
+  LanguageModel:
+    type: "object"
+    properties:
+      program_id:
+        type: "string"
+      language:
+        type: "string"
+  AgencyModel:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      name:
+        type: "string"
+      description:
+        type: "string"
+      physical_address:
+        type: "string"
+      mailing_address:
+        type: "string"
+      disability:
+        type: "string"
+      phone_number:
+        type: "string"
+      hours:
+        type: "string"
+    example:
+      physical_address: "physical_address"
+      mailing_address: "mailing_address"
+      hours: "hours"
+      disability: "disability"
+      name: "name"
+      description: "description"
+      phone_number: "phone_number"
+      id: "id"
+  ProgramModel:
+    type: "object"
+    properties:
+      agency_id:
+        type: "string"
+      id:
+        type: "string"
+      name:
+        type: "string"
+      description:
+        type: "string"
+      physical_address:
+        type: "string"
+      hours:
+        type: "string"
+      ada:
+        type: "string"
+      eligibility:
+        type: "string"
+      application_process:
+        type: "string"
+      documents_required:
+        type: "string"
+      fee_structure:
+        type: "string"
+      coverage_area:
+        type: "string"
+      service_type:
+        type: "string"
+      lat:
+        type: "number"
+      lon:
+        type: "number"
+      last_updated:
+        type: "string"
+    example:
+      physical_address: "physical_address"
+      coverage_area: "coverage_area"
+      hours: "hours"
+      last_updated: "last_updated"
+      agency_id: "agency_id"
+      description: "description"
+      eligibility: "eligibility"
+      lon: 6.02745618307040320615897144307382404804229736328125
+      application_process: "application_process"
+      service_type: "service_type"
+      name: "name"
+      documents_required: "documents_required"
+      fee_structure: "fee_structure"
+      id: "id"
+      lat: 0.80082819046101150206595775671303272247314453125
+      ada: "ada"
+  QueueModel:
+    type: "object"
+    properties:
+      agency_id:
+        type: "string"
+      id:
+        type: "string"
+      name:
+        type: "string"
+      description:
+        type: "string"
+      physical_address:
+        type: "string"
+      hours:
+        type: "string"
+      ada_compliant:
+        type: "string"
+      eligibility:
+        type: "string"
+      application_process:
+        type: "string"
+      documents_required:
+        type: "string"
+      fee_structure:
+        type: "string"
+      coverage_area:
+        type: "string"
+    example:
+      physical_address: "physical_address"
+      coverage_area: "coverage_area"
+      hours: "hours"
+      agency_id: "agency_id"
+      name: "name"
+      documents_required: "documents_required"
+      description: "description"
+      eligibility: "eligibility"
+      fee_structure: "fee_structure"
+      id: "id"
+      application_process: "application_process"
+      ada_compliant: "ada_compliant"

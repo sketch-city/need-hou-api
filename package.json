@@ -1,0 +1,22 @@
+{
+  "name": "needhou-api",
+  "version": "1.0.0",
+  "description": "An API for the NEED HOU Database",
+  "main": "index.js",
+  "scripts": {
+    "prestart": "npm install",
+    "start": "node index.js"
+  },
+  "keywords": [
+    "swagger"
+  ],
+  "license": "Unlicense",
+  "private": true,
+  "dependencies": {
+    "connect": "^3.6.6",
+    "dotenv": "^6.0.0",
+    "js-yaml": "^3.12.0",
+    "pg-promise": "^8.4.6",
+    "swagger-tools": "^0.10.1"
+  }
+}

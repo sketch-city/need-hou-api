@@ -4,7 +4,8 @@ var db = pgp(connectionString);
 
 module.exports = {
 	createAgency,
-	findAgencies
+	findAgencies,
+	findPrograms
 }
 
 function createAgency(agency_data){
@@ -46,11 +47,15 @@ function findAgencies(agency_name){
 }
 
 
-function findPrograms(agency_id) {
+function findPrograms(agency_id, program_id) {
 	var where_statement = '';
 
-	if(agency_name){
-		where_statement = `WHERE agency_id = '${agency_name}'`
+	if(agency_id){
+		where_statement = `WHERE agency_id = '${agency_id}'`
+	}
+
+	if(program_id){
+		where_statement = `WHERE id = '${program_id}'`
 	}
 
 	var query_str = `SELECT * FROM programs ${where_statement} ORDER BY name;`

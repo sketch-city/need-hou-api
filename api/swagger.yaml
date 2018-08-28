@@ -91,9 +91,14 @@ paths:
         description: "Filter by agency id"
         required: false
         type: "string"
+      - name: "id"
+        in: "query"
+        description: "Filter by program id"
+        required: false
+        type: "string"
       responses:
         200:
-          description: "Programs succesfully filtered by agency_id"
+          description: "Programs succesfully filtered"
           schema:
             type: "string"
       x-swagger-router-controller: "Default"

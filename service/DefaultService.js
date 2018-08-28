@@ -108,24 +108,14 @@ exports.findLanguages = function(program_id) {
 }
 
 
-
-exports.findAgencies = function(name) {
-  return queries.findAgencies(name)
-    .then(function(result){
-  return new Promise(function(resolve, reject) {
-    resolve(result);
-    });
-  });
-}
-
 /**
  * Get programs
  *
  * agency_id String Filter by agency id (optional)
  * returns String
  **/
-exports.findPrograms = function(agency_id) {
-  return queries.findPrograms(agency_id)
+exports.findPrograms = function(agency_id, program_id) {
+  return queries.findPrograms(agency_id, program_id)
     .then(function(result){
   return new Promise(function(resolve, reject) {
     resolve(result);

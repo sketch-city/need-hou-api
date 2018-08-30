@@ -58,7 +58,7 @@ function findPrograms(agency_id, program_id, service_type) {
 	}
 
 	if(service_type){
-		where_statement = `WHERE id = '${service_type}'`
+		where_statement = `WHERE service_type = '${service_type}'`
 	}
 
 

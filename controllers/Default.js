@@ -81,6 +81,7 @@ module.exports.findLanguages = function findLanguages (req, res, next) {
 module.exports.findPrograms = function findPrograms (req, res, next) {
   var agency_id = req.swagger.params['agency_id'].value;
   var program_id = req.swagger.params['id'].value;
+  var service_type = req.swagger.params['service_type'].value
   Default.findPrograms(agency_id, program_id)
     .then(function (response) {
       utils.writeJson(res, response);

@@ -47,9 +47,8 @@ function findAgencies(agency_name){
 }
 
 
-function findPrograms(agency_id, program_id) {
+function findPrograms(agency_id, program_id, service_type) {
 	var where_statement = '';
-
 	if(agency_id){
 		where_statement = `WHERE agency_id = '${agency_id}'`
 	}
@@ -57,6 +56,12 @@ function findPrograms(agency_id, program_id) {
 	if(program_id){
 		where_statement = `WHERE id = '${program_id}'`
 	}
+
+	if(service_type){
+		where_statement = `WHERE id = '${service_type}'`
+	}
+
+
 
 	var query_str = `SELECT * FROM programs ${where_statement} ORDER BY name;`
 	console.log(query_str)

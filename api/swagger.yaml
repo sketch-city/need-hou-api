@@ -96,6 +96,11 @@ paths:
         description: "Filter by program id"
         required: false
         type: "string"
+      - name: "service_type"
+        in: "query"
+        description: "Filter by service type"
+        required: false
+        type: "string"
       responses:
         200:
           description: "Programs succesfully filtered"

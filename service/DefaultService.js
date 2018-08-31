@@ -96,14 +96,11 @@ exports.findAgencies = function(name) {
  * returns String
  **/
 exports.findLanguages = function(program_id) {
+  return queries.findLanguages(program_id)
+    .then(function(result){
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = "";
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
+    resolve(result);
+    });
   });
 }
 

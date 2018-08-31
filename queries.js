@@ -5,7 +5,8 @@ var db = pgp(connectionString);
 module.exports = {
 	createAgency,
 	findAgencies,
-	findPrograms
+	findPrograms,
+	findLanguages
 }
 
 function createAgency(agency_data){
@@ -41,6 +42,20 @@ function findAgencies(agency_name){
 	}
 
 	var query_str = `SELECT * FROM agencies ${where_statement} ORDER BY name;`
+	console.log(query_str)
+	return db.many(query_str)
+
+}
+
+function findLanguages(program_id){
+	var where_statement = '';
+
+
+	if(program_id){
+		where_statement = `WHERE program_id = '${program_id}'`
+	}
+
+	var query_str = `SELECT * FROM languages ${where_statement} ORDER BY language;`
 	console.log(query_str)
 	return db.many(query_str)
 

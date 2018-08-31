@@ -61,11 +61,31 @@ function findPrograms(agency_id, program_id, service_type) {
 		where_statement = `WHERE service_type = '${service_type}'`
 	}
 
+	if(agency_id && program_id){
+		where_statement = `WHERE agency_id = '${agency_id}' AND 
+								 id = '${program_id}'`						 
+	}
 
+	if(program_id && service_type){
+		where_statement = `WHERE service_type = '${service_type}' AND 
+								 id = '${program_id}'` 
+	}
+
+
+	if(service_type && agency_id){
+		where_statement = `WHERE service_type = '${service_type}' AND 
+								 agency_id = '${agency_id}'`
+	}
+
+	if(agency_id && program_id && service_type){
+		where_statement = `WHERE agency_id = '${agency_id}' AND 
+								 id = '${program_id}' AND 
+								 service_type = '${service_type}'`
+	}
 
 	var query_str = `SELECT * FROM programs ${where_statement} ORDER BY name;`
-	console.log(query_str)
 
+	console.log(query_str)
 	return db.many(query_str)
 }
 

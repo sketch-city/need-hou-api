@@ -42,7 +42,7 @@ function findAgencies(agency_name, search_term){
 	}
 
 	if(search_term){
-		query_str = `SELECT agencies.id, agencies.name, agencies.description, agencies.physical_address,
+		query_str = `SELECT DISTINCT agencies.id, agencies.name, agencies.description, agencies.physical_address,
 							agencies.mailing_address, agencies.disability, agencies.phone_number, agencies.hours FROM agencies
 					 INNER JOIN programs 
 					 ON agencies.id = programs.agency_id AND

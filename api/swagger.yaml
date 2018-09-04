@@ -161,6 +161,11 @@ paths:
         description: "Filter by agency name"
         required: false
         type: "string"
+      - name: "search_term"
+        in: "query"
+        description: "Filter by search term"
+        required: false
+        type: "string"
       responses:
         200:
           description: "Agencies succesfully searched"

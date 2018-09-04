@@ -33,15 +33,22 @@ function createAgency(agency_data){
 }
 
 
-function findAgencies(agency_name){
-	var where_statement = '';
+function findAgencies(agency_name, search_term){
+	var query_str = ''
 
 
 	if(agency_name){
-		where_statement = `WHERE name = '${agency_name}'`
+		query_str = `SELECT * FROM agencies WHERE name = '${agency_name}' ORDER BY name;`
 	}
 
-	var query_str = `SELECT * FROM agencies ${where_statement} ORDER BY name;`
+	if(search_term){
+		query_str = `SELECT agencies.id, agencies.name, agencies.description, agencies.physical_address,
+							agencies.mailing_address, agencies.disability, agencies.phone_number, agencies.hours FROM agencies
+					 INNER JOIN programs 
+					 ON agencies.id = programs.agency_id AND
+										programs.description LIKE '%${search_term}%'`
+	}
+
 	console.log(query_str)
 	return db.many(query_str)
 

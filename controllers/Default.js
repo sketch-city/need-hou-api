@@ -58,7 +58,8 @@ module.exports.createQueue = function createQueue (req, res, next) {
 
 module.exports.findAgencies = function findAgencies (req, res, next) {
   var name = req.swagger.params['name'].value;
-  Default.findAgencies(name)
+  var search_term = req.swagger.params['search_term'].value;
+  Default.findAgencies(name, search_term)
     .then(function (response) {
       utils.writeJson(res, response);
     })

@@ -34,7 +34,7 @@ function createAgency(agency_data){
 
 
 function findAgencies(agency_name, search_term){
-	var query_str = ''
+	var query_str = `SELECT * FROM agencies ORDER BY name;`
 
 
 	if(agency_name){

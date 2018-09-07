@@ -89,8 +89,8 @@ exports.createQueue = function(queue_data) {
  * name String Filter by agency name (optional)
  * returns String
  **/
-exports.findAgencies = function(name, search_term) {
-  return queries.findAgencies(name, search_term)
+exports.findAgencies = function(name, search_term, agency_id) {
+  return queries.findAgencies(name, search_term, agency_id)
     .then(function(result){
   return new Promise(function(resolve, reject) {
     resolve(result);

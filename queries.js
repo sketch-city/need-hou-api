@@ -89,12 +89,16 @@ function createProgram(program_data){
 
 
 
-function findAgencies(agency_name, search_term){
+function findAgencies(agency_name, search_term, agency_id){
 	var query_str = `SELECT * FROM agencies ORDER BY name;`
 
 
 	if(agency_name){
 		query_str = `SELECT * FROM agencies WHERE name = '${agency_name}' ORDER BY name;`
+	}
+
+	if(agency_id){
+		query_str = `SELECT * FROM agencies WHERE id = '${agency_id}' ORDER BY name;`
 	}
 
 	if(search_term){

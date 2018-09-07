@@ -14,7 +14,15 @@ exports.agenciesOPTIONS = function() {
   });
 }
 
-
+/**
+ *
+ * no response value expected for this operation
+ **/
+exports.programsOPTIONS = function() {
+  return new Promise(function(resolve, reject) {
+    resolve();
+  });
+}
 
 
 /**

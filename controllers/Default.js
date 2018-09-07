@@ -9,6 +9,9 @@ module.exports.agenciesOPTIONS = function agenciesOPTIONS (req, res, next) {
     .then(function(response) {
       utils.writeJson(res, response)
     })
+     .catch(function (response) {
+      utils.writeJson(res, response);
+    });
 }
 
 

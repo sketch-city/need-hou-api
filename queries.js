@@ -4,6 +4,7 @@ var db = pgp(connectionString);
 
 module.exports = {
 	createAgency,
+	createProgram,
 	findAgencies,
 	findPrograms,
 	findLanguages
@@ -31,6 +32,61 @@ function createAgency(agency_data){
 	return db.none(query_str)
 
 }
+
+
+function createProgram(program_data){
+	var query_str = `INSERT INTO programs  (agency_id,
+										    id, 
+											name,
+											description,
+											physical_address,
+											hours,
+											ada,
+											eligibility,
+											application_process,
+											documents_required,
+											fee_structure,
+											coverage_area,
+											service_type,
+											latitude,
+											longitude,
+											last_updated,
+											alternative_name,
+											website,
+											appointment_required,
+											accepting_clients,
+											holiday_schedule,
+											transportation)
+					VALUES( '${program_data.agency_id}',
+							'${program_data.id}',
+							'${program_data.name}',
+							'${program_data.description}',
+							'${program_data.physical_address}',
+							'${program_data.hours}',
+							'${program_data.ada}',
+							'${program_data.eligibility}',
+							'${program_data.application_process}',
+							'${program_data.documents_required}',
+							'${program_data.fee_structure}', 
+							'${program_data.coverage_area}',
+							'${program_data.service_type}',
+							${program_data.latitude},
+							${program_data.longitude},
+							'${program_data.last_updated}',
+							'${program_data.alternative_name}',
+							'${program_data.website}',
+							'${program_data.appointment_required}',
+							'${program_data.accepting_clients}',
+							'${program_data.holiday_schedule}',
+							'${program_data.transportation}'
+							);`
+	console.log(query_str)
+	return db.none(query_str)
+
+}
+
+
+
 
 
 function findAgencies(agency_name, search_term){

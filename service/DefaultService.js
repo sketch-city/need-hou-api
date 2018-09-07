@@ -62,11 +62,13 @@ exports.createLanguages = function(language_data) {
  * no response value expected for this operation
  **/
 exports.createProgram = function(program_data) {
+  return queries.createProgram(program_data)
+    .then(function(result){
   return new Promise(function(resolve, reject) {
-    resolve();
+    resolve(result);
+    });
   });
 }
-
 
 /**
  * Add item to queue

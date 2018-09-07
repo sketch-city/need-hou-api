@@ -23,20 +23,20 @@ var spec = fs.readFileSync(path.join(__dirname,'api/swagger.yaml'), 'utf8');
 var swaggerDoc = jsyaml.safeLoad(spec);
 
 // Add headers
-// app.use(function (req, res, next) {
+app.use(function (req, res, next) {
 
-// // Website you wish to allow to connect
-// res.setHeader('Access-Control-Allow-Origin', '*');
-// // Request methods you wish to allow
-//  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
-// // // Request headers you wish to allow
-//  res.setHeader('Access-Control-Allow-Headers',  'Accept, Content-Type, X-Access-Token, X-Application-Name, X-Request-Sent-Time');
-// // // Set to true if you need the website to include cookies in the requests sent
-// // to the API (e.g. in case you use sessions)
-// res.setHeader('Access-Control-Allow-Credentials', true);
-// // Pass to next layer of middleware
-// next();
-// });
+// Website you wish to allow to connect
+res.setHeader('Access-Control-Allow-Origin', '*');
+// Request methods you wish to allow
+ res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+// // Request headers you wish to allow
+ res.setHeader('Access-Control-Allow-Headers',  'Accept, Content-Type, X-Access-Token, X-Application-Name, X-Request-Sent-Time');
+// // Set to true if you need the website to include cookies in the requests sent
+// to the API (e.g. in case you use sessions)
+//res.setHeader('Access-Control-Allow-Credentials', true);
+// Pass to next layer of middleware
+next();
+});
 
 
 

@@ -315,11 +315,23 @@ definitions:
         type: "string"
       service_type:
         type: "string"
-      lat:
+      latitude:
         type: "number"
-      lon:
+      longitude:
         type: "number"
       last_updated:
+        type: "string"
+      alternative_name:
+        type: "string"
+      website:
+        type: "string"
+      appointment_required:
+        type: "string"
+      accepting_clients:
+        type: "string"
+      holiday_schedule: 
+        type: "string"
+      transportation:
         type: "string"
     example:
       physical_address: "physical_address"
@@ -329,15 +341,21 @@ definitions:
       agency_id: "agency_id"
       description: "description"
       eligibility: "eligibility"
-      lon: 6.02745618307040320615897144307382404804229736328125
+      longitude: 6.02745618307040320615897144307382404804229736328125
       application_process: "application_process"
       service_type: "service_type"
       name: "name"
       documents_required: "documents_required"
       fee_structure: "fee_structure"
       id: "id"
-      lat: 0.80082819046101150206595775671303272247314453125
+      latitude: 0.80082819046101150206595775671303272247314453125
       ada: "ada"
+      alternative_name: ""
+      website: ""
+      appointment_required: ""
+      accepting_clients: ""
+      holiday_schedule: ""
+      transportation: ""
   QueueModel:
     type: "object"
     properties:

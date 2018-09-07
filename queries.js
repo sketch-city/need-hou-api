@@ -18,7 +18,7 @@ function createAgency(agency_data){
 											disability,
 											phone_number,
 											hours)
-					VALUES(${agency_data.id},
+					VALUES( '${agency_data.id}',
 							'${agency_data.name}',
 							'${agency_data.description}',
 							'${agency_data.physical_address}',

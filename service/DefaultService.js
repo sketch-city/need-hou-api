@@ -48,9 +48,12 @@ exports.createAgency = function(agency_data) {
  * language_data LanguageModel data for new language
  * no response value expected for this operation
  **/
-exports.createLanguages = function(language_data) {
+exports.createLanguage = function(language_data) {
+  return queries.createLanguage(language_data)
+    .then(function(result){
   return new Promise(function(resolve, reject) {
     resolve();
+  });
   });
 }
 

@@ -5,10 +5,24 @@ var db = pgp(connectionString);
 module.exports = {
 	createAgency,
 	createProgram,
+	createLanguage,
 	findAgencies,
 	findPrograms,
 	findLanguages
 }
+
+
+function createLanguage(language_data){
+	var query_str = `INSERT INTO languages (program_id, language)
+				VALUES( '${language_data.program_id}',
+						'${language_data.language}' );`
+
+
+	console.log(query_str)
+	return db.none(query_str)
+						
+}
+
 
 function createAgency(agency_data){
 	var query_str = `INSERT INTO agencies (id, 

@@ -37,9 +37,9 @@ module.exports.createAgency = function createAgency (req, res, next) {
     });
 };
 
-module.exports.createLanguages = function createLanguages (req, res, next) {
+module.exports.createLanguage = function createLanguage (req, res, next) {
   var language_data = req.swagger.params['language_data'].value;
-  Default.createLanguages(language_data)
+  Default.createLanguage(language_data)
     .then(function (response) {
       utils.writeJson(res, response);
     })

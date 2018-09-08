@@ -65,7 +65,7 @@ paths:
       x-swagger-router-controller: "Default"
     post:
       description: "Create program languages"
-      operationId: "createLanguages"
+      operationId: "createLanguage"
       consumes:
       - "application/x-www-form-urlencoded"
       parameters:

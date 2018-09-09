@@ -46,6 +46,20 @@ paths:
             $ref: "#/definitions/Error"
       x-swagger-router-controller: "Default"
   /languages:
+    options:
+      operationId: "languagesOPTIONS"
+      parameters: []
+      responses:
+        200:
+          description: "200 response"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+            Access-Control-Allow-Methods:
+              type: "string"
+            Access-Control-Allow-Headers:
+              type: "string"
+      x-swagger-router-controller: "Default"
     get:
       description: "Get program langauges"
       operationId: "findLanguages"

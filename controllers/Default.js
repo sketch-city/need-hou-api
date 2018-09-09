@@ -26,6 +26,17 @@ module.exports.programsOPTIONS = function programsOPTIONS (req, res, next) {
 }
 
 
+module.exports.languagesOPTIONS = function languagesOPTIONS (req, res, next) {
+  Default.languagesOPTIONS()
+    .then(function(response) {
+      utils.writeJson(res, response)
+    })
+     .catch(function (response) {
+      utils.writeJson(res, response);
+    });
+}
+
+
 module.exports.createAgency = function createAgency (req, res, next) {
   var agency_data = req.swagger.params['agency_data'].value;
   Default.createAgency(agency_data)

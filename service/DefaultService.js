@@ -24,6 +24,16 @@ exports.programsOPTIONS = function() {
   });
 }
 
+/**
+ *
+ * no response value expected for this operation
+ **/
+exports.languagesOPTIONS = function() {
+  return new Promise(function(resolve, reject) {
+    resolve();
+  });
+}
+
 
 /**
  * Create an agency

@@ -46,6 +46,25 @@ paths:
             $ref: "#/definitions/Error"
       x-swagger-router-controller: "Default"
   /languages:
+    put:
+      description: "Update languages"
+      operationId: "updateLanguage"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Updated language object"
+        required: true
+        schema:
+          $ref: "#/definitions/LanguageModel"
+      responses:
+        200:
+          description: "Program succesfully updated"
+        404:
+          description: "Program not found"
+          schema:
+            $ref: "#/definitions/Error"
     options:
       operationId: "languagesOPTIONS"
       parameters: []
@@ -132,6 +151,10 @@ paths:
       responses:
         200:
           description: "Programs succesfully filtered"
+          schema:
+            type: "string"
+        404:
+          description: "No program data returned"
           schema:
             type: "string"
       x-swagger-router-controller: "Default"

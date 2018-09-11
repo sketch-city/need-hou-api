@@ -168,9 +168,12 @@ exports.findQueue = function() {
  * body AgencyModel Updated agency object
  * no response value expected for this operation
  **/
-exports.updateAgency = function(body) {
+exports.updateAgency = function(agency_data) {
+return queries.updateAgency(agency_data)
+    .then(function(result){
   return new Promise(function(resolve, reject) {
-    resolve();
+    resolve(result);
+    });
   });
 }
 

@@ -114,7 +114,12 @@ module.exports.findPrograms = function findPrograms (req, res, next) {
       utils.writeJson(res, response);
     })
     .catch(function (response) {
-      utils.writeJson(res, response);
+          error = {
+            error: '404',
+            message: 'No program data returned'
+          }
+
+      utils.writeJson(res, error , 404);
     });
 };
 
@@ -129,8 +134,8 @@ module.exports.findQueue = function findQueue (req, res, next) {
 };
 
 module.exports.updateAgency = function updateAgency (req, res, next) {
-  var body = req.swagger.params['body'].value;
-  Default.updateAgency(body)
+  var agency_data = req.swagger.params['agency_data'].value;
+  Default.updateAgency(agency_data)
     .then(function (response) {
       utils.writeJson(res, response);
     })

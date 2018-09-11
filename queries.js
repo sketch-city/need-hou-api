@@ -3,6 +3,7 @@ var connectionString = process.env.DB_STRING;
 var db = pgp(connectionString);
 
 module.exports = {
+	updateAgency,
 	createAgency,
 	createProgram,
 	createLanguage,
@@ -16,11 +17,8 @@ function createLanguage(language_data){
 	var query_str = `INSERT INTO languages (program_id, language)
 				VALUES( '${language_data.program_id}',
 						'${language_data.language}' );`
-
-
 	console.log(query_str)
-	return db.none(query_str)
-						
+	return db.none(query_str)					
 }
 
 
@@ -46,6 +44,24 @@ function createAgency(agency_data){
 	return db.none(query_str)
 
 }
+
+
+function updateAgency(agency_data){
+	var query_str = `UPDATE agencies
+		SET name = '${agency_data.name}',
+			description = '${agency_data.description}',
+			physical_address = '${agency_data.physical_address}',
+			mailing_address = '${agency_data.mailing_address}', 
+			disability = '${agency_data.disability}',
+			phone_number = '${agency_data.phone_number}',
+			hours = '${agency_data.hours}'
+		WHERE id = '${agency_data.id}';`
+
+	console.log(query_str)
+	return db.none(query_str)
+
+}
+
 
 
 function createProgram(program_data){
@@ -178,7 +194,10 @@ function findPrograms(agency_id, program_id, service_type) {
 	var query_str = `SELECT * FROM programs ${where_statement} ORDER BY name;`
 
 	console.log(query_str)
+
+
 	return db.many(query_str)
+
 }
 
 

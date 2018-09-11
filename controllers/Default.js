@@ -38,7 +38,7 @@ module.exports.languagesOPTIONS = function languagesOPTIONS (req, res, next) {
 
 
 module.exports.createAgency = function createAgency (req, res, next) {
-  var agency_data = req.swagger.params['agency_data'].value;
+  var agency_data = req.swagger.params['body'].value;
   Default.createAgency(agency_data)
     .then(function (response) {
       utils.writeJson(res, response);
@@ -134,7 +134,7 @@ module.exports.findQueue = function findQueue (req, res, next) {
 };
 
 module.exports.updateAgency = function updateAgency (req, res, next) {
-  var agency_data = req.swagger.params['agency_data'].value;
+  var agency_data = req.swagger.params['body'].value;
   Default.updateAgency(agency_data)
     .then(function (response) {
       utils.writeJson(res, response);
@@ -145,8 +145,8 @@ module.exports.updateAgency = function updateAgency (req, res, next) {
 };
 
 module.exports.updateProgram = function updateProgram (req, res, next) {
-  var body = req.swagger.params['body'].value;
-  Default.updateProgram(body)
+  var program_data = req.swagger.params['body'].value;
+  Default.updateProgram(program_data)
     .then(function (response) {
       utils.writeJson(res, response);
     })

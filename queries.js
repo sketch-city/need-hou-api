@@ -4,6 +4,7 @@ var db = pgp(connectionString);
 
 module.exports = {
 	updateAgency,
+	updateProgram,
 	createAgency,
 	createProgram,
 	createLanguage,
@@ -63,6 +64,38 @@ function updateAgency(agency_data){
 }
 
 
+function updateProgram(program_data){
+	var query_str = `UPDATE programs
+		SET name = '${program_data.name}',
+			description = '${program_data.description}',
+			physical_address = '${program_data.physical_address}',
+			hours = '${program_data.hours}',
+			ada = '${program_data.ada}',
+			eligibility = '${program_data.eligibility}',
+			application_process = '${program_data.application_process}',
+			documents_required = '${program_data.documents_required}',
+			fee_structure = '${program_data.fee_structure}',
+			coverage_area = '${program_data.coverage_area}',
+			service_type = '${program_data.service_type}',
+			last_updated = now()::timestamp,
+			alternative_name = '${program_data.alternative_name}',
+			website = '${program_data.website}',
+			appointment_required = '${program_data.appointment_required}',
+			accepting_clients = '${program_data.accepting_clients}',
+			holiday_schedule = '${program_data.holiday_schedule}',
+			transportation = '${program_data.transportation}', 
+			contact_firstname = '${program_data.contact_firstname}',
+		    contact_lastname = '${program_data.contact_lastname}',
+			contact_title = '${program_data.contact_title}',
+			contact_email =	'${program_data.contact_email}',
+			contact_phone =	'${program_data.contact_phone}'
+		WHERE id = '${program_data.id}';`
+
+	console.log(query_str)
+	return db.none(query_str)
+
+}
+
 
 function createProgram(program_data){
 	var query_str = `INSERT INTO programs  (agency_id,
@@ -84,7 +117,12 @@ function createProgram(program_data){
 											appointment_required,
 											accepting_clients,
 											holiday_schedule,
-											transportation)
+											transportation,
+											contact_firstname,
+											contact_lastname,
+											contact_title,
+											contact_email,
+											contact_phone)
 					VALUES( '${program_data.agency_id}',
 							'${program_data.id}',
 							'${program_data.name}',
@@ -104,7 +142,12 @@ function createProgram(program_data){
 							'${program_data.appointment_required}',
 							'${program_data.accepting_clients}',
 							'${program_data.holiday_schedule}',
-							'${program_data.transportation}'
+							'${program_data.transportation}',
+							'${program_data.contact_firstname}',
+							'${program_data.contact_lastname}',
+							'${program_data.contact_title}',
+							'${program_data.contact_email}',
+							'${program_data.contact_phone}'
 							);`
 	console.log(query_str)
 	return db.none(query_str)

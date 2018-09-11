@@ -375,6 +375,16 @@ definitions:
         type: "string"
       transportation:
         type: "string"
+      contact_firstname:
+        type: "string"
+      contact_lastname:
+        type: "string"
+      contact_title:
+        type: "string"
+      contact_email:
+        type: "string"
+      contact_phone:
+        type: "string"
     example:
       physical_address: "physical_address"
       coverage_area: "coverage_area"
@@ -398,6 +408,11 @@ definitions:
       accepting_clients: ""
       holiday_schedule: ""
       transportation: ""
+      contact_firstname: ""
+      contact_lastname: ""
+      contact_title: ""
+      contact_email: ""
+      contact_phone: ""
   QueueModel:
     type: "object"
     properties:

@@ -184,9 +184,15 @@ return queries.updateAgency(agency_data)
  * body ProgramModel Updated program object
  * no response value expected for this operation
  **/
-exports.updateProgram = function(body) {
+exports.updateProgram = function(program_data) {
+ return queries.updateProgram(program_data)
+    .then(function(result){
   return new Promise(function(resolve, reject) {
-    resolve();
+    resolve(result);
+    });
+
+
+
   });
 }
 

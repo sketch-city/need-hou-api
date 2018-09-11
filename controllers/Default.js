@@ -113,7 +113,7 @@ module.exports.findPrograms = function findPrograms (req, res, next) {
     .then(function (response) {
       utils.writeJson(res, response);
     })
-    .catch(function (response) {
+    .catch(function (error) {
           error = {
             error: '404',
             message: 'No program data returned'

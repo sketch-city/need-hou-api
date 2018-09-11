@@ -38,7 +38,7 @@ module.exports.languagesOPTIONS = function languagesOPTIONS (req, res, next) {
 
 
 module.exports.createAgency = function createAgency (req, res, next) {
-  var agency_data = req.swagger.params['body'].value;
+  var agency_data = req.swagger.params['agency_data'].value;
   Default.createAgency(agency_data)
     .then(function (response) {
       utils.writeJson(res, response);

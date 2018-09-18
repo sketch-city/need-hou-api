@@ -191,7 +191,7 @@ function findLanguages(program_id){
 		where_statement = `WHERE program_id = '${program_id}'`
 	}
 
-	var query_str = `SELECT * FROM languages ${where_statement} ORDER BY language;`
+	var query_str = `SELECT * FROM languages ${where_statement};`
 	console.log(query_str)
 	return db.one(query_str)
 

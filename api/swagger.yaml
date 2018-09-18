@@ -300,6 +300,8 @@ definitions:
         type: "string"
       language_arr:
         type: "array"
+        items: 
+          type: "string"
   AgencyModel:
     type: "object"
     properties:

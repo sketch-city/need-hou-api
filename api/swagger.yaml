@@ -298,8 +298,8 @@ definitions:
     properties:
       program_id:
         type: "string"
-      language:
-        type: "string"
+      language_arr:
+        type: "array"
   AgencyModel:
     type: "object"
     properties:

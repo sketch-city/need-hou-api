@@ -359,10 +359,6 @@ definitions:
         type: "string"
       service_type:
         type: "string"
-      latitude:
-        type: "number"
-      longitude:
-        type: "number"
       last_updated:
         type: "string"
       alternative_name:
@@ -395,14 +391,12 @@ definitions:
       agency_id: "agency_id"
       description: "description"
       eligibility: "eligibility"
-      longitude: 6.02745618307040320615897144307382404804229736328125
       application_process: "application_process"
       service_type: "service_type"
       name: "name"
       documents_required: "documents_required"
       fee_structure: "fee_structure"
       id: "id"
-      latitude: 0.80082819046101150206595775671303272247314453125
       ada: "ada"
       alternative_name: ""
       website: ""

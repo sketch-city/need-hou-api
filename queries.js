@@ -5,6 +5,7 @@ var db = pgp(connectionString);
 module.exports = {
 	updateAgency,
 	updateProgram,
+	updateLanguage,
 	createAgency,
 	createProgram,
 	createLanguage,
@@ -22,6 +23,16 @@ function createLanguage(language_data){
 	return db.none(query_str)					
 }
 
+
+function updateLanguage(language_data){
+		var query_str = `UPDATE languages
+		SET languages_arr = '${language_data.language_arr}',
+		WHERE program_id = '${language_data.program_id}';`
+
+	console.log(query_str)
+	return db.none(query_str)
+
+}
 
 function createAgency(agency_data){
 	var query_str = `INSERT INTO agencies (id, 

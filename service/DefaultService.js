@@ -196,3 +196,16 @@ exports.updateProgram = function(program_data) {
   });
 }
 
+
+exports.updateLanguage= function(language_data) {
+ return queries.updateLanguage(language_data)
+    .then(function(result){
+  return new Promise(function(resolve, reject) {
+    resolve(result);
+    });
+
+
+
+  });
+}
+

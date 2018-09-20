@@ -154,3 +154,14 @@ module.exports.updateProgram = function updateProgram (req, res, next) {
       utils.writeJson(res, response);
     });
 };
+
+module.exports.updateLanguage = function updateProgram (req, res, next) {
+  var language_data = req.swagger.params['body'].value;
+  Default.updateProgram(language_data)
+    .then(function (response) {
+      utils.writeJson(res, response);
+    })
+    .catch(function (response) {
+      utils.writeJson(res, response);
+    });
+};

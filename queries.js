@@ -11,7 +11,20 @@ module.exports = {
 	createLanguage,
 	findAgencies,
 	findPrograms,
-	findLanguages
+	findLanguages,
+	deleteProgram
+}
+
+function deleteProgram(program_id){
+	var where_statement = '';
+
+	if(program_id){
+		where_statement = `WHERE id = '${program_id}'`
+	}
+
+	var query_str = `DELETE FROM programs ${where_statement};`
+	console.log(query_str)
+	return db.none(query_str)
 }
 
 

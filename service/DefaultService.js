@@ -209,3 +209,13 @@ exports.updateLanguage= function(language_data) {
   });
 }
 
+
+exports.deleteProgram = function(program_id) {
+  return queries.deleteProgram(program_id)
+    .then(function(result){
+      return new Promise(function(resolve, reject) {
+        resolve(result);
+      });
+    });
+}
+

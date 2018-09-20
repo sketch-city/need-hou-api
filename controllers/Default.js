@@ -165,3 +165,15 @@ module.exports.updateLanguage = function updateLanguage(req, res, next) {
       utils.writeJson(res, response);
     });
 };
+
+module.exports.deleteProgram = function deleteProgram (req, res, next) {
+  var program_id = req.swagger.params['program_id'].value;
+  Default.deleteProgram(program_id)
+    .then(function (response) {
+      utils.writeJson(res, response);
+    })
+    .catch(function (response) {
+      utils.writeJson(res, response);
+    });
+};
+

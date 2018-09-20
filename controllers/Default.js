@@ -155,9 +155,9 @@ module.exports.updateProgram = function updateProgram (req, res, next) {
     });
 };
 
-module.exports.updateLanguage = function updateProgram (req, res, next) {
+module.exports.updateLanguage = function updateLanguage(req, res, next) {
   var language_data = req.swagger.params['body'].value;
-  Default.updateProgram(language_data)
+  Default.updateLanguage(language_data)
     .then(function (response) {
       utils.writeJson(res, response);
     })

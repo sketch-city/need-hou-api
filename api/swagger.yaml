@@ -302,6 +302,11 @@ definitions:
         type: "array"
         items: 
           type: "string"
+    example:
+      program_id: "13124235"
+      language_arr:
+        - "English"
+        - "Spanish"
   AgencyModel:
     type: "object"
     properties:

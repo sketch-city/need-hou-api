@@ -18,7 +18,7 @@ module.exports = {
 function createLanguage(language_data){
 	var query_str = `INSERT INTO languages (program_id, language_arr)
 				VALUES( '${language_data.program_id}',
-						'${language_data.language_arr}' );`
+						'{${language_data.language_arr.map((data) => `"${data}"`).join(',')}}' );`
 	console.log(query_str)
 	return db.none(query_str)					
 }
@@ -26,7 +26,7 @@ function createLanguage(language_data){
 
 function updateLanguage(language_data){
 		var query_str = `UPDATE languages
-		SET languages_arr = '${language_data.language_arr}',
+		SET language_arr = '{${language_data.language_arr.map((data) => `"${data}"`).join(',')}}' ,
 		WHERE program_id = '${language_data.program_id}';`
 
 	console.log(query_str)
@@ -204,6 +204,7 @@ function findLanguages(program_id){
 
 	var query_str = `SELECT * FROM languages ${where_statement};`
 	console.log(query_str)
+
 	return db.one(query_str)
 
 }

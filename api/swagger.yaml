@@ -405,6 +405,12 @@ definitions:
         type: "string"
       contact_phone:
         type: "string"
+      latitude:
+        type: "number"
+        nullable: "true"
+      longitude:
+        type: "number" 
+        nullable: "true"
     example:
       physical_address: "physical_address"
       coverage_area: "coverage_area"
@@ -431,6 +437,8 @@ definitions:
       contact_title: ""
       contact_email: ""
       contact_phone: ""
+      latitude: 45.67
+      longitude: 76.65
   QueueModel:
     type: "object"
     properties:

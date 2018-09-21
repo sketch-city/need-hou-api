@@ -407,10 +407,8 @@ definitions:
         type: "string"
       latitude:
         type: "number"
-        nullable: "true"
       longitude:
         type: "number" 
-        nullable: "true"
     example:
       physical_address: "physical_address"
       coverage_area: "coverage_area"

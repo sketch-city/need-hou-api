@@ -36,6 +36,16 @@ exports.languagesOPTIONS = function() {
 
 
 /**
+ *
+ * no response value expected for this operation
+ **/
+exports.commentsOPTIONS = function() {
+  return new Promise(function(resolve, reject) {
+    resolve();
+  });
+}
+
+/**
  * Create an agency
  *
  * agency_data AgencyModel data for new agency
@@ -50,6 +60,22 @@ exports.createAgency = function(agency_data) {
   });
 }
 
+
+/**
+ * Create a comment
+ *
+ * comment_data 
+ CommentModel data for new comment
+ * no response value expected for this operation
+ **/
+exports.createComment = function(comment_data) {
+  return queries.createComment(comment_data)
+    .then(function(result){
+  return new Promise(function(resolve, reject) {
+    resolve(result);
+    });
+  });
+}
 
 
 /**

@@ -36,6 +36,16 @@ module.exports.languagesOPTIONS = function languagesOPTIONS (req, res, next) {
     });
 }
 
+module.exports.commentsOPTIONS = function commentsOPTIONS (req, res, next) {
+  Default.commentsOPTIONS()
+    .then(function(response) {
+      utils.writeJson(res, response)
+    })
+     .catch(function (response) {
+      utils.writeJson(res, response);
+    });
+}
+
 
 module.exports.createAgency = function createAgency (req, res, next) {
   var agency_data = req.swagger.params['agency_data'].value;
@@ -47,6 +57,18 @@ module.exports.createAgency = function createAgency (req, res, next) {
       utils.writeJson(res, response);
     });
 };
+
+module.exports.createComment = function createComment (req, res, next) {
+  var comment_data = req.swagger.params['comment_data'].value;
+  Default.createComment(comment_data)
+    .then(function (response) {
+      utils.writeJson(res, response);
+    })
+    .catch(function (response) {
+      utils.writeJson(res, response);
+    });
+};
+
 
 module.exports.createLanguage = function createLanguage (req, res, next) {
   var language_data = req.swagger.params['language_data'].value;

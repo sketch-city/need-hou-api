@@ -13,6 +13,20 @@ produces:
 - "application/json"
 paths:
   /comments:
+    options:
+      operationId: "commentsOPTIONS"
+      parameters: []
+      responses:
+        200:
+          description: "200 response"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+            Access-Control-Allow-Methods:
+              type: "string"
+            Access-Control-Allow-Headers:
+              type: "string"
+      x-swagger-router-controller: "Default"
     get:
       description: "Get comments"
       operationId: "findComments"
@@ -359,12 +373,20 @@ definitions:
     properties: 
       id:
         type: "string"
-      domain:
+      program_id:
         type: "string"
       comment:
         type: "string"
-      date:
+      category:
         type: "string"
+      submission_date:
+        type: "string"
+    example:
+      id: "2345235as"
+      program_id: "343543sf"
+      comment: "This is a comment"
+      category: "category"
+      submission_date: "Date"
   LanguageModel:
     type: "object"
     properties:

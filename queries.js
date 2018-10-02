@@ -9,6 +9,7 @@ module.exports = {
 	createAgency,
 	createProgram,
 	createLanguage,
+	createComment,
 	findAgencies,
 	findPrograms,
 	findComments,
@@ -86,6 +87,27 @@ function createAgency(agency_data){
 	return db.none(query_str)
 
 }
+
+
+function createComment(comment_data){
+	var query_str = `INSERT INTO comments (id, 
+											program_id,
+											comment,
+											category,
+											submission_date)
+					VALUES( '${comment_data.id}',
+							'${comment_data.program_id}',
+							'${comment_data.comment}',
+							'${comment_data.category}',
+							 now()
+							);`
+	console.log(query_str)
+	return db.none(query_str)
+
+}
+
+
+
 
 
 function updateAgency(agency_data){

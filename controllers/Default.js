@@ -94,6 +94,24 @@ module.exports.findAgencies = function findAgencies (req, res, next) {
     });
 };
 
+
+module.exports.findComments = function findComments (req, res, next) {
+  var comment_id = req.swagger.params['comment_id'].value;
+  var program_id = req.swagger.params['program_id'].value;
+  Default.findComments(comment_id, program_id)
+    .then(function (response) {
+      utils.writeJson(res, response);
+    })
+    .catch(function (response) {
+      utils.writeJson(res, response);
+    });
+};
+
+
+
+
+
+
 module.exports.findLanguages = function findLanguages (req, res, next) {
   var program_id = req.swagger.params['program_id'].value;
   Default.findLanguages(program_id)

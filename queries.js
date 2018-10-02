@@ -11,8 +11,10 @@ module.exports = {
 	createLanguage,
 	findAgencies,
 	findPrograms,
+	findComments,
 	findLanguages,
-	deleteProgram
+	deleteProgram,
+	deleteAgency
 }
 
 function deleteProgram(program_id){
@@ -26,6 +28,21 @@ function deleteProgram(program_id){
 	console.log(query_str)
 	return db.none(query_str)
 }
+
+
+function deleteAgency(agency_id){
+	var where_statement = '';
+
+	if(agency_id){
+		where_statement = `WHERE id = '${agency_id}'`
+	}
+
+	var query_str = `DELETE FROM agencies ${where_statement};`
+	console.log(query_str)
+	return db.none(query_str)
+}
+
+
 
 
 function createLanguage(language_data){
@@ -206,6 +223,25 @@ function findAgencies(agency_name, search_term, agency_id){
 	return db.many(query_str)
 
 }
+
+
+function findComments(comment_id, program_id){
+	query_str = ''
+	if(comment_id){
+		query_str = `SELECT * FROM comments WHERE id = '${comment_id}' ;`
+	}
+
+	if(program_id){
+		query_str = `SELECT * FROM comments WHERE program_id = '${program_id}';`
+	}
+
+	console.log(query_str)
+	return db.many(query_str)
+
+}
+
+
+
 
 function findLanguages(program_id){
 	var where_statement = '';

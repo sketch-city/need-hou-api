@@ -145,6 +145,23 @@ exports.findPrograms = function(agency_id, program_id, service_type) {
 
 
 /**
+ * Get comments
+ *program_id filter comment_id filter (optional)
+ * returns String
+ **/
+
+exports.findComments = function(comment_id, program_id) {
+  return queries.findComments(comment_id, program_id)
+    .then(function(result){
+  return new Promise(function(resolve, reject) {
+    resolve(result);
+  });
+});
+}
+
+
+
+/**
  * Get queue
  *
  * returns String

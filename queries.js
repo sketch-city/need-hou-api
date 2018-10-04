@@ -57,7 +57,7 @@ function createLanguage(language_data){
 
 function updateLanguage(language_data){
 		var query_str = `UPDATE languages
-		SET language_arr = '{${language_data.language_arr.map((data) => `"${data}"`).join(',')}}' ,
+		SET language_arr = '{${language_data.language_arr.map((data) => `"${data}"`).join(',')}}' 
 		WHERE program_id = '${language_data.program_id}';`
 
 	console.log(query_str)

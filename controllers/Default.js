@@ -81,6 +81,19 @@ module.exports.createLanguage = function createLanguage (req, res, next) {
     });
 };
 
+
+module.exports.updateLanguage = function updateLanguage(req, res, next) {
+  var language_data = req.swagger.params['body'].value;
+  Default.updateLanguage(language_data)
+    .then(function (response) {
+      utils.writeJson(res, response);
+    })
+    .catch(function (response) {
+      utils.writeJson(res, response);
+    });
+};
+
+
 module.exports.createProgram = function createProgram (req, res, next) {
   var program_data = req.swagger.params['program_data'].value;
   Default.createProgram(program_data)
@@ -195,16 +208,7 @@ module.exports.updateProgram = function updateProgram (req, res, next) {
     });
 };
 
-module.exports.updateLanguage = function updateLanguage(req, res, next) {
-  var language_data = req.swagger.params['body'].value;
-  Default.updateLanguage(language_data)
-    .then(function (response) {
-      utils.writeJson(res, response);
-    })
-    .catch(function (response) {
-      utils.writeJson(res, response);
-    });
-};
+
 
 module.exports.deleteProgram = function deleteProgram (req, res, next) {
   var program_id = req.swagger.params['program_id'].value;

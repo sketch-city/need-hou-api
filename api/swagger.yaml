@@ -118,11 +118,12 @@ paths:
           $ref: "#/definitions/LanguageModel"
       responses:
         200:
-          description: "Program succesfully updated"
+          description: "Language succesfully updated"
         404:
-          description: "Program not found"
+          description: "Language not found"
           schema:
             $ref: "#/definitions/Error"
+      x-swagger-router-controller: "Default"
     options:
       operationId: "languagesOPTIONS"
       parameters: []

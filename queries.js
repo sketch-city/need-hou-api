@@ -8,6 +8,7 @@ module.exports = {
 	updateLanguage,
 	createAgency,
 	createProgram,
+	createReport,
 	createLanguage,
 	createComment,
 	findAgencies,
@@ -116,6 +117,36 @@ function createComment(comment_data){
 							'${comment_data.comment}',
 							'${comment_data.category}',
 							 now()
+							);`
+	console.log(query_str)
+	return db.none(query_str)
+
+}
+
+
+
+function createReport(report_data){
+
+
+
+
+	var query_str = `INSERT INTO comments (id, 
+											name,
+											org_name,
+											time_incident,
+											date_incident,
+											org_reported,
+											issue_desc,
+											alternative)
+					VALUES( '${guid()}',
+							'${report_data.name}',
+							'${report_data.org_name}',
+							'${report_data.time_incident}',
+							'${report_data.date_incident}',
+							'${report_data.org_reported}',
+							'${report_data.issue_desc}',
+							'${report_data.alternative}'
+
 							);`
 	console.log(query_str)
 	return db.none(query_str)

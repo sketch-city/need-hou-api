@@ -13,10 +13,22 @@ module.exports = {
 	findAgencies,
 	findPrograms,
 	findComments,
+	findReports,
 	findLanguages,
 	deleteProgram,
 	deleteAgency
 }
+
+function guid() {
+  function s4() {
+    return Math.floor((1 + Math.random()) * 0x10000)
+      .toString(16)
+      .substring(1);
+  }
+  return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+}
+
+
 
 function deleteProgram(program_id){
 	var where_statement = '';
@@ -90,12 +102,16 @@ function createAgency(agency_data){
 
 
 function createComment(comment_data){
+
+
+
+
 	var query_str = `INSERT INTO comments (id, 
 											program_id,
 											comment,
 											category,
 											submission_date)
-					VALUES( '${comment_data.id}',
+					VALUES( '${guid()}',
 							'${comment_data.program_id}',
 							'${comment_data.comment}',
 							'${comment_data.category}',
@@ -262,7 +278,17 @@ function findComments(comment_id, program_id){
 
 }
 
+function findReports(report_id){
+	query_str = ''
+	if(report_id){
+		query_str = `SELECT * FROM reports WHERE id = '${report_id}' ;`
+	}
 
+
+	console.log(query_str)
+	return db.many(query_str)
+
+}
 
 
 function findLanguages(program_id){

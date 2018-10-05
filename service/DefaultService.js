@@ -46,6 +46,16 @@ exports.commentsOPTIONS = function() {
 }
 
 /**
+ *
+ * no response value expected for this operation
+ **/
+exports.reportsOPTIONS = function() {
+  return new Promise(function(resolve, reject) {
+    resolve();
+  });
+}
+
+/**
  * Create an agency
  *
  * agency_data AgencyModel data for new agency
@@ -76,6 +86,24 @@ exports.createComment = function(comment_data) {
     });
   });
 }
+
+
+/**
+ * Create a report
+ *
+ * report_data 
+ ReportModel data for new report
+ * no response value expected for this operation
+ **/
+exports.createReport = function(report_data) {
+  return queries.createReport(report_data)
+    .then(function(result){
+  return new Promise(function(resolve, reject) {
+    resolve(result);
+    });
+  });
+}
+
 
 
 /**
@@ -178,6 +206,21 @@ exports.findPrograms = function(agency_id, program_id, service_type) {
 
 exports.findComments = function(comment_id, program_id) {
   return queries.findComments(comment_id, program_id)
+    .then(function(result){
+  return new Promise(function(resolve, reject) {
+    resolve(result);
+  });
+});
+}
+
+/**
+ * Get reports
+ *report_id filter (optional)
+ * returns String
+ **/
+
+exports.findReports = function(report_id) {
+  return queries.findReports(report_id)
     .then(function(result){
   return new Promise(function(resolve, reject) {
     resolve(result);

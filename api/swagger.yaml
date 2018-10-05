@@ -12,6 +12,55 @@ consumes:
 produces:
 - "application/json"
 paths:
+  /reports:
+    options:
+      operationId: "reportsOPTIONS"
+      parameters: []
+      responses:
+        200:
+          description: "200 response"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+            Access-Control-Allow-Methods:
+              type: "string"
+            Access-Control-Allow-Headers:
+              type: "string"
+      x-swagger-router-controller: "Default"
+    get:
+      description: "Get reports"
+      operationId: "findReports"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "report_id"
+        in: "query"
+        description: "Filter by report id"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "Reports returned"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "Default"
+    post:
+      description: "Create report"
+      operationId: "createReport"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "report_data"
+        description: "data for new report"
+        required: true
+        schema:
+          $ref: "#/definitions/ReportModel"
+      responses:
+        200:
+          description: "Report succesfully created"
+      x-swagger-router-controller: "Default"
+
   /comments:
     options:
       operationId: "commentsOPTIONS"
@@ -368,6 +417,25 @@ definitions:
       code:
         type: "string"
       message:
+        type: "string"
+  ReportModel:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      name:
+        type: "string"
+      org_name:
+        type: "string"
+      time_incident:
+        type: "string"
+      date_incident:
+        type: "string"
+      org_reported:
+        type: "string"
+      issue_desc:
+        type: "string"
+      alternative:
         type: "string"
   CommentModel:
     type: "object"

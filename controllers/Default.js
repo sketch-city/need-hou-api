@@ -47,6 +47,16 @@ module.exports.commentsOPTIONS = function commentsOPTIONS (req, res, next) {
 }
 
 
+module.exports.reportsOPTIONS = function reportsOPTIONS (req, res, next) {
+  Default.reportsOPTIONS()
+    .then(function(response) {
+      utils.writeJson(res, response)
+    })
+     .catch(function (response) {
+      utils.writeJson(res, response);
+    });
+}
+
 module.exports.createAgency = function createAgency (req, res, next) {
   var agency_data = req.swagger.params['agency_data'].value;
   Default.createAgency(agency_data)
@@ -69,6 +79,17 @@ module.exports.createComment = function createComment (req, res, next) {
     });
 };
 
+
+module.exports.createReport = function createReport (req, res, next) {
+  var report_data = req.swagger.params['report_data'].value;
+  Default.createReport(report_data)
+    .then(function (response) {
+      utils.writeJson(res, response);
+    })
+    .catch(function (response) {
+      utils.writeJson(res, response);
+    });
+};
 
 module.exports.createLanguage = function createLanguage (req, res, next) {
   var language_data = req.swagger.params['language_data'].value;
@@ -142,7 +163,16 @@ module.exports.findComments = function findComments (req, res, next) {
     });
 };
 
-
+module.exports.findReports = function findReports (req, res, next) {
+  var report_id = req.swagger.params['report_id'].value;
+  Default.findReports(report_id)
+    .then(function (response) {
+      utils.writeJson(res, response);
+    })
+    .catch(function (response) {
+      utils.writeJson(res, response);
+    });
+};
 
 
 

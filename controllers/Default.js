@@ -57,6 +57,16 @@ module.exports.reportsOPTIONS = function reportsOPTIONS (req, res, next) {
     });
 }
 
+module.exports.queueOPTIONS = function queueOPTIONS (req, res, next) {
+  Default.queueOPTIONS()
+    .then(function(response) {
+      utils.writeJson(res, response)
+    })
+     .catch(function (response) {
+      utils.writeJson(res, response);
+    });
+}
+
 module.exports.createAgency = function createAgency (req, res, next) {
   var agency_data = req.swagger.params['agency_data'].value;
   Default.createAgency(agency_data)

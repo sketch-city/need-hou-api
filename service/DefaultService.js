@@ -56,6 +56,16 @@ exports.reportsOPTIONS = function() {
 }
 
 /**
+ *
+ * no response value expected for this operation
+ **/
+exports.queueOPTIONS = function() {
+  return new Promise(function(resolve, reject) {
+    resolve();
+  });
+}
+
+/**
  * Create an agency
  *
  * agency_data AgencyModel data for new agency

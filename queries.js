@@ -17,6 +17,7 @@ module.exports = {
 	findComments,
 	findReports,
 	findLanguages,
+	findQueue,
 	deleteProgram,
 	deleteAgency
 }
@@ -70,10 +71,11 @@ function createLanguage(language_data){
 
 
 function createQueue(queue_data){
-	var query_str = `INSERT INTO queue (posted_date, submission_type, submission)
+	var query_str = `INSERT INTO queue (posted_date, submission_type, submission, id)
 				VALUES( now(),
 						'${queue_data.submission_type}',
-						'${JSON.stringify(queue_data.submission)}'
+						'${JSON.stringify(queue_data.submission)}',
+						'${guid()}'
 
 
 
@@ -324,6 +326,18 @@ function findReports(report_id){
 	query_str = ''
 	if(report_id){
 		query_str = `SELECT * FROM reports WHERE id = '${report_id}' ;`
+	}
+
+
+	console.log(query_str)
+	return db.many(query_str)
+
+}
+
+function findQueue(queue_id){
+	query_str = ''
+	if(queue_id){
+		query_str = `SELECT * FROM queue WHERE id = '${queue_id}' ;`
 	}
 
 

@@ -250,15 +250,12 @@ exports.findReports = function(report_id) {
  *
  * returns String
  **/
-exports.findQueue = function() {
+exports.findQueue = function(queue_id) {
+  return queries.findQueue(queue_id)
+    .then(function(result){
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = "";
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
+    resolve(result);
+  });
   });
 }
 

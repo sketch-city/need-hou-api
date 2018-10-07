@@ -230,12 +230,18 @@ module.exports.findPrograms = function findPrograms (req, res, next) {
 };
 
 module.exports.findQueue = function findQueue (req, res, next) {
-  Default.findQueue()
+var queue_id = req.swagger.params['queue_id'].value
+  Default.findQueue(queue_id)
     .then(function (response) {
       utils.writeJson(res, response);
     })
-    .catch(function (response) {
-      utils.writeJson(res, response);
+    .catch(function (error) {
+          error = {
+            error: '404',
+            message: 'No queue data returned'
+          }
+
+      utils.writeJson(res, error , 404);
     });
 };
 

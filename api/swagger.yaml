@@ -139,7 +139,12 @@ paths:
       operationId: "findQueue"
       produces:
       - "application/json"
-      parameters: []
+      parameters:
+      - name: "queue_id"
+        in: "query"
+        description: "Filter by queue id"
+        required: false
+        type: "string"
       responses:
         200:
           description: "Queue returned"
@@ -596,6 +601,8 @@ definitions:
   QueueModel:
     type: "object"
     properties:
+      id:
+        type: "string"
       posted_date:
         type: "string"
       submission_type:

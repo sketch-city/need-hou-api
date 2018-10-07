@@ -123,6 +123,23 @@ exports.createLanguage = function(language_data) {
 
 
 /**
+ * Create queue submission
+ *
+ * queue_data QueueModel data 
+ * no response value expected for this operation
+ **/
+exports.createQueue = function(queue_data) {
+  return queries.createQueue(queue_data)
+    .then(function(result){
+  return new Promise(function(resolve, reject) {
+    resolve();
+  });
+  });
+}
+
+
+
+/**
  * Create new program
  *
  * program_data ProgramModel data for new program
@@ -134,18 +151,6 @@ exports.createProgram = function(program_data) {
   return new Promise(function(resolve, reject) {
     resolve(result);
     });
-  });
-}
-
-/**
- * Add item to queue
- *
- * queue_data QueueModel data for new program to be added to queue
- * no response value expected for this operation
- **/
-exports.createQueue = function(queue_data) {
-  return new Promise(function(resolve, reject) {
-    resolve();
   });
 }
 

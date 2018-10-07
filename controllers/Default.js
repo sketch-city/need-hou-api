@@ -102,6 +102,17 @@ module.exports.createLanguage = function createLanguage (req, res, next) {
     });
 };
 
+module.exports.createQueue = function createQueue (req, res, next) {
+  var queue_data = req.swagger.params['queue_data'].value;
+  Default.createQueue(queue_data)
+    .then(function (response) {
+      utils.writeJson(res, response);
+    })
+    .catch(function (response) {
+      utils.writeJson(res, response);
+    });
+};
+
 
 module.exports.updateLanguage = function updateLanguage(req, res, next) {
   var language_data = req.swagger.params['body'].value;
@@ -127,7 +138,9 @@ module.exports.createProgram = function createProgram (req, res, next) {
 };
 
 module.exports.createQueue = function createQueue (req, res, next) {
+  console.log('start here')
   var queue_data = req.swagger.params['queue_data'].value;
+  console.log(queue_data)
   Default.createQueue(queue_data)
     .then(function (response) {
       utils.writeJson(res, response);

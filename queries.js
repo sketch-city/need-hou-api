@@ -10,6 +10,7 @@ module.exports = {
 	createProgram,
 	createReport,
 	createLanguage,
+	createQueue,
 	createComment,
 	findAgencies,
 	findPrograms,
@@ -68,6 +69,18 @@ function createLanguage(language_data){
 }
 
 
+function createQueue(queue_data){
+	var query_str = `INSERT INTO queue (posted_date, submission)
+				VALUES( now(),'${JSON.stringify(queue_data.submission)}');`
+					
+	console.log(query_str)
+	return db.none(query_str)					
+}
+
+
+
+
+
 function updateLanguage(language_data){
 		var query_str = `UPDATE languages
 		SET language_arr = '{${language_data.language_arr.map((data) => `"${data}"`).join(',')}}' 
@@ -103,10 +116,6 @@ function createAgency(agency_data){
 
 
 function createComment(comment_data){
-
-
-
-
 	var query_str = `INSERT INTO comments (id, 
 											program_id,
 											comment,
@@ -126,10 +135,6 @@ function createComment(comment_data){
 
 
 function createReport(report_data){
-
-
-
-
 	var query_str = `INSERT INTO comments (id, 
 											name,
 											org_name,

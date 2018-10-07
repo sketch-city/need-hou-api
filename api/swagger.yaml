@@ -140,17 +140,13 @@ paths:
       parameters:
       - in: "body"
         name: "queue_data"
-        description: "data for new program to be added to queue"
+        description: "data for new submission to be added to queue"
         required: true
         schema:
           $ref: "#/definitions/QueueModel"
       responses:
         200:
           description: "Program succesfully created"
-        409:
-          description: "Program already exists"
-          schema:
-            $ref: "#/definitions/Error"
       x-swagger-router-controller: "Default"
   /languages:
     put:
@@ -586,40 +582,16 @@ definitions:
   QueueModel:
     type: "object"
     properties:
-      agency_id:
+      posted_date:
         type: "string"
-      id:
-        type: "string"
-      name:
-        type: "string"
-      description:
-        type: "string"
-      physical_address:
-        type: "string"
-      hours:
-        type: "string"
-      ada_compliant:
-        type: "string"
-      eligibility:
-        type: "string"
-      application_process:
-        type: "string"
-      documents_required:
-        type: "string"
-      fee_structure:
-        type: "string"
-      coverage_area:
-        type: "string"
-    example:
-      physical_address: "physical_address"
-      coverage_area: "coverage_area"
-      hours: "hours"
-      agency_id: "agency_id"
-      name: "name"
-      documents_required: "documents_required"
-      description: "description"
-      eligibility: "eligibility"
-      fee_structure: "fee_structure"
-      id: "id"
-      application_process: "application_process"
-      ada_compliant: "ada_compliant"
+      submission:
+        type: "object"
+        properties:
+          agency_data:
+            type: "object"
+          program_data:
+            type: "object"
+          language_data:
+            type: "object"
+
+

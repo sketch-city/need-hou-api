@@ -308,7 +308,7 @@ function findAgencies(agency_name, search_term, agency_id){
 
 
 function findComments(comment_id, program_id){
-	query_str = ''
+	query_str = 'SELECT * FROM comments'
 	if(comment_id){
 		query_str = `SELECT * FROM comments WHERE id = '${comment_id}' ;`
 	}
@@ -323,7 +323,7 @@ function findComments(comment_id, program_id){
 }
 
 function findReports(report_id){
-	query_str = ''
+	query_str = 'SELECT * FROM reports'
 	if(report_id){
 		query_str = `SELECT * FROM reports WHERE id = '${report_id}' ;`
 	}
@@ -335,7 +335,7 @@ function findReports(report_id){
 }
 
 function findQueue(queue_id){
-	query_str = ''
+	query_str = 'SELECT * FROM queue'
 	if(queue_id){
 		query_str = `SELECT * FROM queue WHERE id = '${queue_id}' ;`
 	}

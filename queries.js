@@ -70,8 +70,14 @@ function createLanguage(language_data){
 
 
 function createQueue(queue_data){
-	var query_str = `INSERT INTO queue (posted_date, submission)
-				VALUES( now(),'${JSON.stringify(queue_data.submission)}');`
+	var query_str = `INSERT INTO queue (posted_date, submission_type, submission)
+				VALUES( now(),
+						'${queue_data.submission_type}',
+						'${JSON.stringify(queue_data.submission)}'
+
+
+
+						);`
 					
 	console.log(query_str)
 	return db.none(query_str)					

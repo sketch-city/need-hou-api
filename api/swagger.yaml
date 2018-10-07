@@ -598,6 +598,8 @@ definitions:
     properties:
       posted_date:
         type: "string"
+      submission_type:
+        type: "string"
       submission:
         type: "object"
         properties:

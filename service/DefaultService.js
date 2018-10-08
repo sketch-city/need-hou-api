@@ -317,3 +317,14 @@ exports.deleteProgram = function(program_id) {
     });
 }
 
+
+exports.deleteQueue= function(queue_id) {
+  return queries.deleteQueue(queue_id)
+    .then(function(result){
+      return new Promise(function(resolve, reject) {
+        resolve(result);
+      });
+    });
+}
+
+

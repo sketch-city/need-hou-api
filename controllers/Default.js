@@ -280,3 +280,14 @@ module.exports.deleteProgram = function deleteProgram (req, res, next) {
     });
 };
 
+module.exports.deleteQueue = function deleteQueue (req, res, next) {
+  var queue_id = req.swagger.params['queue_id'].value;
+  Default.deleteQueue(queue_id)
+    .then(function (response) {
+      utils.writeJson(res, response);
+    })
+    .catch(function (response) {
+      utils.writeJson(res, response);
+    });
+};
+

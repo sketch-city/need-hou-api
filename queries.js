@@ -19,7 +19,8 @@ module.exports = {
 	findLanguages,
 	findQueue,
 	deleteProgram,
-	deleteAgency
+	deleteAgency,
+	deleteQueue
 }
 
 function guid() {
@@ -57,6 +58,19 @@ function deleteAgency(agency_id){
 	console.log(query_str)
 	return db.none(query_str)
 }
+
+function deleteQueue(queue_id){
+	var where_statement = '';
+
+	if(queue_id){
+		where_statement = `WHERE id = '${queue_id}'`
+	}
+
+	var query_str = `DELETE FROM queue ${where_statement};`
+	console.log(query_str)
+	return db.none(query_str)
+}
+
 
 
 

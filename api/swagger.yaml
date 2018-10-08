@@ -167,6 +167,23 @@ paths:
         200:
           description: "Program succesfully created"
       x-swagger-router-controller: "Default"
+    delete:
+      description: "Delete queue item"
+      operationId: "deleteQueue"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "queue_id"
+        in: "query"
+        description: "The queue item that needs to be deleted"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Queue succesfully deleted"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "Default"
   /languages:
     put:
       description: "Update languages"

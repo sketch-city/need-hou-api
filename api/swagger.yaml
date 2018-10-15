@@ -558,7 +558,9 @@ definitions:
       coverage_area:
         type: "string"
       service_type:
-        type: "string"
+        type: "array"
+        items: 
+          type: "string"
       last_updated:
         type: "string"
       alternative_name:
@@ -596,7 +598,9 @@ definitions:
       description: "description"
       eligibility: "eligibility"
       application_process: "application_process"
-      service_type: "service_type"
+      service_type: 
+        - "Legal"
+        - "Family"
       name: "name"
       documents_required: "documents_required"
       fee_structure: "fee_structure"

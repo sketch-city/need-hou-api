@@ -292,9 +292,6 @@ function createProgram(program_data){
 }
 
 
-
-
-
 function findAgencies(agency_name, search_term, agency_id){
 	var query_str = `SELECT * FROM agencies ORDER BY name;`
 
@@ -388,7 +385,7 @@ function findPrograms(agency_id, program_id, service_type) {
 	}
 
 	if(service_type){
-		where_statement = `WHERE service_type = '${service_type}'`
+		where_statement = `WHERE array_to_string(service_type, ', ') LIKE '%${service_type}%'`
 	}
 
 	if(agency_id && program_id){
@@ -397,20 +394,20 @@ function findPrograms(agency_id, program_id, service_type) {
 	}
 
 	if(program_id && service_type){
-		where_statement = `WHERE service_type = '${service_type}' AND 
+		where_statement = `WHERE array_to_string(service_type, ', ') LIKE '%${service_type}%' AND 
 								 id = '${program_id}'` 
 	}
 
 
 	if(service_type && agency_id){
-		where_statement = `WHERE service_type = '${service_type}' AND 
+		where_statement = `WHERE array_to_string(service_type, ', ') LIKE '%${service_type}%' AND 
 								 agency_id = '${agency_id}'`
 	}
 
 	if(agency_id && program_id && service_type){
 		where_statement = `WHERE agency_id = '${agency_id}' AND 
 								 id = '${program_id}' AND 
-								 service_type = '${service_type}'`
+								 array_to_string(service_type, ', ') LIKE '%${service_type}%'`
 	}
 
 	var query_str = `SELECT * FROM programs ${where_statement} ORDER BY name;`

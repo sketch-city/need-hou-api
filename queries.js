@@ -90,7 +90,7 @@ function createQueue(queue_data){
 						'${queue_data.submission_type}',
 						'${JSON.stringify(queue_data.submission)}',
 						'${guid()}'
-						'""',
+						'"new"',
 
 
 

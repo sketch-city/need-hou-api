@@ -628,6 +628,8 @@ definitions:
         type: "string"
       submission_type:
         type: "string"
+      status:
+        type: "string"
       submission:
         type: "object"
         properties:

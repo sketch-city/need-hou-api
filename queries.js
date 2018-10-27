@@ -89,8 +89,8 @@ function createQueue(queue_data){
 				VALUES( now(),
 						'${queue_data.submission_type}',
 						'${JSON.stringify(queue_data.submission)}',
-						'${guid()}'
-						'"new"',
+						'${guid()}',
+						'${queue_data.status}'
 
 
 

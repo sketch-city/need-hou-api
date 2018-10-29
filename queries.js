@@ -6,6 +6,7 @@ module.exports = {
 	updateAgency,
 	updateProgram,
 	updateLanguage,
+	updateQueue,
 	createAgency,
 	createProgram,
 	createReport,
@@ -101,6 +102,16 @@ function createQueue(queue_data){
 }
 
 
+function updateQueue(queue_data){
+		var query_str = `UPDATE queue
+		SET posted_date = now(),
+			status = '${queue_data.status}'
+		WHERE id = '${queue_data.id}';`
+
+	console.log(query_str)
+	return db.none(query_str)
+
+}
 
 
 
@@ -113,6 +124,8 @@ function updateLanguage(language_data){
 	return db.none(query_str)
 
 }
+
+
 
 function createAgency(agency_data){
 	var query_str = `INSERT INTO agencies (id, 

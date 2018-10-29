@@ -308,6 +308,19 @@ exports.updateLanguage= function(language_data) {
 }
 
 
+exports.updateQueue= function(queue_data) {
+ return queries.updateQueue(queue_data)
+    .then(function(result){
+  return new Promise(function(resolve, reject) {
+    resolve(result);
+    });
+
+
+
+  });
+}
+
+
 exports.deleteProgram = function(program_id) {
   return queries.deleteProgram(program_id)
     .then(function(result){

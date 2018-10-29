@@ -134,6 +134,26 @@ paths:
             Access-Control-Allow-Headers:
               type: "string"
       x-swagger-router-controller: "Default"
+    put:
+      description: "Update queue item"
+      operationId: "updateQueue"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Updated queue object"
+        required: true
+        schema:
+          $ref: "#/definitions/QueueModel"
+      responses:
+        200:
+          description: "Queue succesfully updated"
+        404:
+          description: "Queue not found"
+          schema:
+            $ref: "#/definitions/Error"
+      x-swagger-router-controller: "Default"
     get:
       description: "Get queue"
       operationId: "findQueue"

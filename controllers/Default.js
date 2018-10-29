@@ -124,6 +124,17 @@ module.exports.createQueue = function createQueue (req, res, next) {
 };
 
 
+module.exports.updateQueue = function updateQueue(req, res, next) {
+  var queue_data = req.swagger.params['body'].value;
+  Default.updateQueue(queue_data)
+    .then(function (response) {
+      utils.writeJson(res, response);
+    })
+    .catch(function (response) {
+      utils.writeJson(res, response);
+    });
+};
+
 module.exports.updateLanguage = function updateLanguage(req, res, next) {
   var language_data = req.swagger.params['body'].value;
   Default.updateLanguage(language_data)

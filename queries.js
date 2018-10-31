@@ -92,9 +92,6 @@ function createQueue(queue_data){
 						'${JSON.stringify(queue_data.submission)}',
 						'${guid()}',
 						'${queue_data.status}'
-
-
-
 						);`
 					
 	console.log(query_str)
@@ -135,7 +132,8 @@ function createAgency(agency_data){
 											mailing_address,
 											disability,
 											phone_number,
-											hours)
+											hours, 
+											website)
 					VALUES( '${agency_data.id}',
 							'${agency_data.name}',
 							'${agency_data.description}',
@@ -143,7 +141,8 @@ function createAgency(agency_data){
 							'${agency_data.mailing_address}',
 							'${agency_data.disability}',
 							'${agency_data.phone_number}',
-							'${agency_data.hours}'
+							'${agency_data.hours}',
+							'${agency_data.website}'
 							);`
 	console.log(query_str)
 	return db.none(query_str)
@@ -206,7 +205,8 @@ function updateAgency(agency_data){
 			mailing_address = '${agency_data.mailing_address}', 
 			disability = '${agency_data.disability}',
 			phone_number = '${agency_data.phone_number}',
-			hours = '${agency_data.hours}'
+			hours = '${agency_data.hours}',
+			website = '${agency_data.website}'
 		WHERE id = '${agency_data.id}';`
 
 	console.log(query_str)
@@ -234,12 +234,7 @@ function updateProgram(program_data){
 			appointment_required = '${program_data.appointment_required}',
 			accepting_clients = '${program_data.accepting_clients}',
 			holiday_schedule = '${program_data.holiday_schedule}',
-			transportation = '${program_data.transportation}', 
-			contact_firstname = '${program_data.contact_firstname}',
-		    contact_lastname = '${program_data.contact_lastname}',
-			contact_title = '${program_data.contact_title}',
-			contact_email =	'${program_data.contact_email}',
-			contact_phone =	'${program_data.contact_phone}'
+			transportation = '${program_data.transportation}'
 		WHERE id = '${program_data.id}';`
 
 	console.log(query_str)
@@ -269,11 +264,35 @@ function createProgram(program_data){
 											accepting_clients,
 											holiday_schedule,
 											transportation,
-											contact_firstname,
-											contact_lastname,
-											contact_title,
-											contact_email,
-											contact_phone)
+											service_area,
+											waitlist_wait,
+											next_steps,
+											zipcode_eligibility,
+											income_eligibility,
+											gender_eligibility,
+											age_eligibility,
+											other_program_enrollment,
+											other_eligibility,
+											immigration_status,
+											id_accepted_current,
+											id_accepted_expired,
+											id_accepted_notes,
+											proof_address,
+											appointment_required_notes,
+											service_available_intake,
+											service_available_intake_notes,
+											website_languages,
+											frontline_languages,
+											interpretation_offered,
+											crisis_services_offered,
+											schedule_notes,
+											document_languages,
+											document_assistance,
+											visual_aids_offered,
+											consultation_opportunity,
+											enforcement_request_policy,
+											cultural_competency_offered
+											)
 					VALUES( '${program_data.agency_id}',
 							'${program_data.id}',
 							'${program_data.name}',
@@ -294,11 +313,34 @@ function createProgram(program_data){
 							'${program_data.accepting_clients}',
 							'${program_data.holiday_schedule}',
 							'${program_data.transportation}',
-							'${program_data.contact_firstname}',
-							'${program_data.contact_lastname}',
-							'${program_data.contact_title}',
-							'${program_data.contact_email}',
-							'${program_data.contact_phone}'
+							'${program_data.service_area}',
+							'${program_data.waitlist_wait}',
+							'${program_data.next_steps}',
+							'{${program_data.zipcode_eligibility.map((data) => `"${data}"`).join(',')}}',
+							'${program_data.income_eligibility}',
+							'{${program_data.gender_eligibility.map((data) => `"${data}"`).join(',')}}',
+							'{${program_data.age_eligibility.map((data) => `"${data}"`).join(',')}}',
+							'${program_data.other_program_enrollment}',
+							'${program_data.other_eligibility}',
+							'{${program_data.immigration_status.map((data) => `"${data}"`).join(',')}}',
+							'{${program_data.id_accepted_current.map((data) => `"${data}"`).join(',')}}',
+							'{${program_data.id_accepted_expired.map((data) => `"${data}"`).join(',')}}',
+							'${program_data.id_accepted_notes}',
+							'${program_data.proof_address}',
+							'${program_data.appointment_required_notes}',
+							'${program_data.service_available_intake}',
+							'${program_data.service_available_intake_notes}',
+							'{${program_data.website_languages.map((data) => `"${data}"`).join(',')}}',
+							'{${program_data.frontline_languages.map((data) => `"${data}"`).join(',')}}',
+							'{${program_data.interpretation_offered.map((data) => `"${data}"`).join(',')}}',
+							'{${program_data.crisis_services_offered.map((data) => `"${data}"`).join(',')}}',
+							'${program_data.schedule_notes}',
+							'{${program_data.document_languages.map((data) => `"${data}"`).join(',')}}',
+							'${program_data.document_assistance}',
+							'${program_data.visual_aids_offered}',
+							'${program_data.consultation_opportunity}',
+							'${program_data.enforcement_request_policy}', 
+							'${program_data.cultural_competency_offered}'
 							);`
 	console.log(query_str)
 	return db.none(query_str)

@@ -541,6 +541,8 @@ definitions:
         type: "string"
       hours:
         type: "string"
+      website:
+        type: "string"
     example:
       physical_address: "physical_address"
       mailing_address: "mailing_address"
@@ -550,6 +552,7 @@ definitions:
       description: "description"
       phone_number: "phone_number"
       id: "id"
+      website: "website"
   ProgramModel:
     type: "object"
     properties:
@@ -562,8 +565,6 @@ definitions:
       description:
         type: "string"
       physical_address:
-        type: "string"
-      hours:
         type: "string"
       ada:
         type: "string"
@@ -595,24 +596,108 @@ definitions:
         type: "string"
       transportation:
         type: "string"
-      contact_firstname:
-        type: "string"
-      contact_lastname:
-        type: "string"
-      contact_title:
-        type: "string"
-      contact_email:
-        type: "string"
-      contact_phone:
-        type: "string"
       latitude:
         type: "number"
       longitude:
-        type: "number" 
+        type: "number"
+      service_area:
+        type: "string"
+      waitlist_wait:
+        type: "string"
+      next_steps:
+        type: "string"
+      zipcode_eligibility:
+        type: "array"
+        items: 
+          type: "string" 
+      income_eligibility:
+        type: "string"
+      gender_eligibility:
+        type: "array"
+        items: 
+          type: "string"
+      age_eligibility:
+        type: "array"
+        items: 
+          type: "string"
+      other_program_enrollment:
+        type: "string"
+      other_eligibility:
+        type: "string"
+      immigration_status:
+        type: "array"
+        items: 
+          type: "string"
+      id_accepted_current:
+        type: "array"
+        items: 
+          type: "string"
+      id_accepted_expired:
+        type: "array"
+        items: 
+          type: "string"
+      id_accepted_notes:
+        type: "string"
+      proof_address:
+        type: "string"
+      appointment_required_notes:
+        type: "string"
+      service_available_intake:
+        type: "string"
+      service_available_intake_notes:
+        type: "string"
+      website_languages:
+        type: "array"
+        items: 
+          type: "string"
+      frontline_languages:
+        type: "array"
+        items: 
+          type: "string"
+      interpretation_offered:
+        type: "array"
+        items: 
+          type: "string"
+      crisis_services_offered:
+        type: "array"
+        items: 
+          type: "string"
+      schedule_notes:
+        type: "string"
+      document_languages:
+        type: "array"
+        items: 
+          type: "string"
+      document_assistance:
+        type: "string"
+      visual_aids_offered:
+        type: "string"
+      consultation_opportunity:
+        type: "string"
+      enforcement_request_policy:
+        type: "string"
+      cultural_competency_offered:
+        type: "string"
+      schedule:
+        type: "object"
+        properties:
+          monday:
+            type: "object"
+          tuesday:
+            type: "object"
+          wednesday:
+            type: "object"
+          thursday:
+            type: "object"
+          friday:
+            type: "object"
+          saturday:
+            type: "object"
+          sunday:
+            type: "object"
     example:
       physical_address: "physical_address"
       coverage_area: "coverage_area"
-      hours: "hours"
       last_updated: "last_updated"
       agency_id: "agency_id"
       description: "description"
@@ -632,13 +717,54 @@ definitions:
       accepting_clients: ""
       holiday_schedule: ""
       transportation: ""
-      contact_firstname: ""
-      contact_lastname: ""
-      contact_title: ""
-      contact_email: ""
       contact_phone: ""
       latitude: 45.67
       longitude: 76.65
+      service_area: "Near Northside"
+      waitlist_wait: "5"
+      next_steps: "Next steps for future"
+      zipcode_eligibility:
+        - "77054"
+        - "77002"
+      income_eligibility: "60% below poverty line"
+      gender_eligibility:
+        - "Male"
+        - "Female"
+      age_eligibility:
+        - "early childhood"
+        - "youth"
+      other_program_enrollment: "other enrollment"
+      other_eligibility: "other eligibility"
+      immigration_status: 
+        - "U.S Citizen"
+        - "Legal Permanent Resident"
+      id_accepted_current:
+        - "U.S government issued ID"
+        - "Any photo Id"
+      proof_address: "Yes, verification letter from referring"
+      appointment_required_notes: "blha blah al"
+      service_available_intake: "Yes"
+      service_available_intake_notes: "sdlfkdjsfldsj"
+      website_languages:
+        - "English"
+        - "Spanish"
+      frontline_languages:
+        - "English"
+      interpretation_offered:
+        - "Yes, for frontline staff"
+        - "Yes, for program staff"
+      crisis_services_offered:
+        - "Yes, 24 hours"
+      schedule_notes: "schedule notes"
+      document_languages:
+        - "English"
+        - "Spanish"
+      document_assistance: "Yes"
+      visual_aids_offered: "No"
+      consultation_opportunity: "Yes"
+      enforcement_request_policy: "No"
+      cultural_competency_offered: "Yes"
+
   QueueModel:
     type: "object"
     properties:

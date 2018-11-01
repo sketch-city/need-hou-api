@@ -249,7 +249,6 @@ function createProgram(program_data){
 											name,
 											description,
 											physical_address,
-											hours,
 											ada,
 											eligibility,
 											application_process,
@@ -291,14 +290,14 @@ function createProgram(program_data){
 											visual_aids_offered,
 											consultation_opportunity,
 											enforcement_request_policy,
-											cultural_competency_offered
+											cultural_competency_offered,
+											schedule
 											)
 					VALUES( '${program_data.agency_id}',
 							'${program_data.id}',
 							'${program_data.name}',
 							'${program_data.description}',
 							'${program_data.physical_address}',
-							'${program_data.hours}',
 							'${program_data.ada}',
 							'${program_data.eligibility}',
 							'${program_data.application_process}',
@@ -340,7 +339,8 @@ function createProgram(program_data){
 							'${program_data.visual_aids_offered}',
 							'${program_data.consultation_opportunity}',
 							'${program_data.enforcement_request_policy}', 
-							'${program_data.cultural_competency_offered}'
+							'${program_data.cultural_competency_offered}',
+							'${JSON.stringify(program_data.schedule)}'
 							);`
 	console.log(query_str)
 	return db.none(query_str)

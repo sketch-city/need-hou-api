@@ -613,9 +613,7 @@ definitions:
       income_eligibility:
         type: "string"
       gender_eligibility:
-        type: "array"
-        items: 
-          type: "string"
+        type: "string"
       age_eligibility:
         type: "array"
         items: 
@@ -727,9 +725,7 @@ definitions:
         - "77054"
         - "77002"
       income_eligibility: "60% below poverty line"
-      gender_eligibility:
-        - "Male"
-        - "Female"
+      gender_eligibility: "list of eligible"
       age_eligibility:
         - "early childhood"
         - "youth"

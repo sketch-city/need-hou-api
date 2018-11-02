@@ -466,10 +466,13 @@ function findPrograms(agency_id, program_id, service_type) {
 								 array_to_string(service_type, ', ') LIKE '%${service_type}%'`
 	}
 
-	var query_str = `SELECT * FROM programs ${where_statement} ORDER BY name;`
+  	var query_str = `SELECT programs.*, agencies.name AS agency_name 
+  					FROM programs 
+  					INNER JOIN agencies ON programs.agency_id = agencies.id 
+  					${where_statement}
+					ORDER BY programs.name;`
 
 	console.log(query_str)
-
 
 	return db.many(query_str)
 

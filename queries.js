@@ -432,12 +432,13 @@ function findLanguages(program_id){
 
 function findPrograms(agency_id, program_id, service_type) {
 	var where_statement = '';
+
 	if(agency_id){
-		where_statement = `WHERE agency_id = '${agency_id}'`
+		where_statement = `WHERE programs.agency_id = '${agency_id}'`
 	}
 
 	if(program_id){
-		where_statement = `WHERE id = '${program_id}'`
+		where_statement = `WHERE programs.id = '${program_id}'`
 	}
 
 	if(service_type){
@@ -445,24 +446,24 @@ function findPrograms(agency_id, program_id, service_type) {
 	}
 
 	if(agency_id && program_id){
-		where_statement = `WHERE agency_id = '${agency_id}' AND 
-								 id = '${program_id}'`						 
+		where_statement = `WHERE programs.agency_id = '${agency_id}' AND 
+								 programs.id = '${program_id}'`						 
 	}
 
 	if(program_id && service_type){
 		where_statement = `WHERE array_to_string(service_type, ', ') LIKE '%${service_type}%' AND 
-								 id = '${program_id}'` 
+								 programs.id = '${program_id}'` 
 	}
 
 
 	if(service_type && agency_id){
 		where_statement = `WHERE array_to_string(service_type, ', ') LIKE '%${service_type}%' AND 
-								 agency_id = '${agency_id}'`
+								 programs.agency_id = '${agency_id}'`
 	}
 
 	if(agency_id && program_id && service_type){
-		where_statement = `WHERE agency_id = '${agency_id}' AND 
-								 id = '${program_id}' AND 
+		where_statement = `WHERE programs.agency_id = '${agency_id}' AND 
+								 programs.id = '${program_id}' AND 
 								 array_to_string(service_type, ', ') LIKE '%${service_type}%'`
 	}
 

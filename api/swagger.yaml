@@ -576,6 +576,8 @@ definitions:
         type: "string"
       fee_structure:
         type: "string"
+      service_cost:
+        type: "string"
       coverage_area:
         type: "string"
       service_type:
@@ -712,6 +714,7 @@ definitions:
       alternative_name: ""
       website: ""
       appointment_required: ""
+      service_cost: "service cost"
       accepting_clients: ""
       holiday_schedule: ""
       transportation: ""

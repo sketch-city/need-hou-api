@@ -501,9 +501,10 @@ function findPrograms(agency_id, program_id, service_type) {
 								 array_to_string(service_type, ', ') LIKE '%${service_type}%'`
 	}
 
-  	var query_str = `SELECT programs.*, agencies.name AS agency_name 
+  	var query_str = `SELECT programs.*, agencies.name AS agency_name, languages.language_arr 
   					FROM programs 
   					INNER JOIN agencies ON programs.agency_id = agencies.id 
+  					INNER JOIN languages ON programs.id = languages.program_id
   					${where_statement}
 					ORDER BY programs.name;`
 

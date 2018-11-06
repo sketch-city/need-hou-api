@@ -680,19 +680,19 @@ definitions:
         type: "object"
         properties:
           monday:
-            type: "object"
+            type: "array"
           tuesday:
-            type: "object"
+            type: "array"
           wednesday:
-            type: "object"
+            type: "array"
           thursday:
-            type: "object"
+            type: "array"
           friday:
-            type: "object"
+            type: "array"
           saturday:
-            type: "object"
+            type: "array"
           sunday:
-            type: "object"
+            type: "array"
     example:
       physical_address: "physical_address"
       coverage_area: "coverage_area"

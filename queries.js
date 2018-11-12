@@ -1,6 +1,4 @@
-var pgp = require('pg-promise')();
-var connectionString = process.env.DB_STRING;
-var db = pgp(connectionString);
+var db = require('./db');
 
 module.exports = {
 	updateAgency,

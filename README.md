@@ -17,3 +17,12 @@ open http://localhost:8080/docs
 ```
 
 This project leverages the mega-awesome [swagger-tools](https://github.com/apigee-127/swagger-tools) middleware which does most all the work.
+
+
+## Simple auth
+
+Very quick and dirty create user command
+
+```
+npm run create-user --  --username=unique-username-here --fullname=Your\ Name --password=password-here
+```

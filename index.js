@@ -1,5 +1,7 @@
 'use strict';
 
+require('dotenv').config();
+
 var fs = require('fs'),
     path = require('path'),
     http = require('http');
@@ -8,7 +10,8 @@ var app = require('connect')();
 var swaggerTools = require('swagger-tools');
 var jsyaml = require('js-yaml');
 
-require('dotenv').config();
+var auth = require('./auth/token');
+
 var serverPort = process.env.PORT || '8080';
 
 // swaggerRouter configuration
@@ -39,17 +42,28 @@ res.setHeader('Access-Control-Allow-Credentials', true);
 next();
 });
 
-
-
-
-
-
-
 // Initialize the Swagger middleware
 swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {
 
   // Interpret Swagger resources and attach metadata to request - must be first in swagger-tools middleware chain
   app.use(middleware.swaggerMetadata());
+
+  // Provide the security handlers
+  app.use(middleware.swaggerSecurity({
+    Bearer: auth.verifyToken
+  }));
+  app.use(function(err, req, res, next) {
+    if(err.statusCode == 403){
+      var error = {};
+      error.code = 1006;
+      error.status = 403;
+      error.message = `Authorization Failed.  ${err.message}`;
+      res.setHeader('Content-Type', 'application/json');
+      return res.end(JSON.stringify(error));
+    }
+    next();
+  });
+
 
   // Validate Swagger requests
   app.use(middleware.swaggerValidator());

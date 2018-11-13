@@ -3,37 +3,32 @@
 var utils = require('../utils/writer.js');
 var Default = require('../service/DefaultService');
 
+function sendAuthOptions(res) {
+  res.writeHead(200, {
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Headers': 'Authorization, Content-Type',
+  });
+  res.end();
+}
 
 module.exports.agenciesOPTIONS = function agenciesOPTIONS (req, res, next) {
   Default.agenciesOPTIONS()
-    .then(function(response) {
-      utils.writeJson(res, response)
-    })
-     .catch(function (response) {
-      utils.writeJson(res, response);
-    });
+    .then(sendAuthOptions.bind(null, res))
+     .catch(sendAuthOptions.bind(null, res));
 }
 
 
 module.exports.programsOPTIONS = function programsOPTIONS (req, res, next) {
   Default.programsOPTIONS()
-    .then(function(response) {
-      utils.writeJson(res, response)
-    })
-     .catch(function (response) {
-      utils.writeJson(res, response);
-    });
+    .then(sendAuthOptions.bind(null, res))
+    .catch(sendAuthOptions.bind(null, res));
 }
 
 
 module.exports.languagesOPTIONS = function languagesOPTIONS (req, res, next) {
   Default.languagesOPTIONS()
-    .then(function(response) {
-      utils.writeJson(res, response)
-    })
-     .catch(function (response) {
-      utils.writeJson(res, response);
-    });
+    .then(sendAuthOptions.bind(null, res))
+    .catch(sendAuthOptions.bind(null, res));
 }
 
 module.exports.commentsOPTIONS = function commentsOPTIONS (req, res, next) {

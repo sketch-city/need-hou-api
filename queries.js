@@ -133,7 +133,8 @@ function createAgency(agency_data){
 											disability,
 											phone_number,
 											hours, 
-											website)
+											website,
+											source)
 					VALUES( '${agency_data.id}',
 							'${agency_data.name}',
 							'${agency_data.description}',
@@ -142,7 +143,8 @@ function createAgency(agency_data){
 							'${agency_data.disability}',
 							'${agency_data.phone_number}',
 							'${agency_data.hours}',
-							'${agency_data.website}'
+							'${agency_data.website}',
+							'${agency_data.source}'
 							);`
 	console.log(query_str)
 	return db.none(query_str)
@@ -206,7 +208,8 @@ function updateAgency(agency_data){
 			disability = '${agency_data.disability}',
 			phone_number = '${agency_data.phone_number}',
 			hours = '${agency_data.hours}',
-			website = '${agency_data.website}'
+			website = '${agency_data.website}',
+			source = '${agency_data.source}'
 		WHERE id = '${agency_data.id}';`
 
 	console.log(query_str)
@@ -265,7 +268,8 @@ function updateProgram(program_data){
 							consultation_opportunity = '${program_data.consultation_opportunity}',
 							enforcement_request_policy = '${program_data.enforcement_request_policy}', 
 							cultural_competency_offered = '${program_data.cultural_competency_offered}',
-							schedule = '${JSON.stringify(program_data.schedule)}'
+							schedule = '${JSON.stringify(program_data.schedule)}',
+							source = '${program_data.source}'
 							WHERE id = '${program_data.id}';`
 
 
@@ -325,7 +329,8 @@ function createProgram(program_data){
 											consultation_opportunity,
 											enforcement_request_policy,
 											cultural_competency_offered,
-											schedule
+											schedule,
+											source
 											)
 					VALUES( '${program_data.agency_id}',
 							'${program_data.id}',
@@ -374,7 +379,8 @@ function createProgram(program_data){
 							'${program_data.consultation_opportunity}',
 							'${program_data.enforcement_request_policy}', 
 							'${program_data.cultural_competency_offered}',
-							'${JSON.stringify(program_data.schedule)}'
+							'${JSON.stringify(program_data.schedule)}',
+							'${program_data.source}'
 							);`
 	console.log(query_str)
 	return db.none(query_str)

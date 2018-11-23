@@ -286,6 +286,18 @@ module.exports.deleteProgram = function deleteProgram (req, res, next) {
     });
 };
 
+
+module.exports.deleteAgency = function deleteAgency (req, res, next) {
+  var agency_id = req.swagger.params['agency_id'].value;
+  Default.deleteAgency(agency_id)
+    .then(function (response) {
+      utils.writeJson(res, response);
+    })
+    .catch(function (response) {
+      utils.writeJson(res, response);
+    });
+};
+
 module.exports.deleteQueue = function deleteQueue (req, res, next) {
   var queue_id = req.swagger.params['queue_id'].value;
   Default.deleteQueue(queue_id)

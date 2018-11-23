@@ -331,6 +331,16 @@ exports.deleteProgram = function(program_id) {
 }
 
 
+
+exports.deleteAgency = function(agency_id) {
+  return queries.deleteAgency(agency_id)
+    .then(function(result){
+      return new Promise(function(resolve, reject) {
+        resolve(result);
+      });
+    });
+}
+
 exports.deleteQueue= function(queue_id) {
   return queries.deleteQueue(queue_id)
     .then(function(result){

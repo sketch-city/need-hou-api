@@ -503,6 +503,28 @@ paths:
           schema:
             type: "string"
       x-swagger-router-controller: "Default"
+    delete:
+      description: "Delete a agency"
+      operationId: "deleteAgency"
+      produces:
+      - "application/json"
+      security:
+        - Bearer: []
+      x-security-scopes:
+        - admin
+        - user
+      parameters:
+      - name: "agency_id"
+        in: "query"
+        description: "The agency that needs to be deleted"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Agency succesfully deleted"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "Default"
     post:
       description: "Create an agency"
       operationId: "createAgency"

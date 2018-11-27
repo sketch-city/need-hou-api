@@ -170,7 +170,7 @@ function createComment(comment_data){
 
 
 function createReport(report_data){
-	var query_str = `INSERT INTO comments (id, 
+	var query_str = `INSERT INTO reports (id, 
 											name,
 											org_name,
 											time_incident,
@@ -505,7 +505,8 @@ function findPrograms(agency_id, program_id, service_type) {
 								 array_to_string(service_type, ', ') LIKE '%${service_type}%'`
 	}
 
-  	var query_str = `SELECT programs.*, agencies.name AS agency_name,
+  	var query_str = `SELECT programs.*, 
+  					agencies.name AS agency_name,
   					agencies.website AS agency_website,
   					agencies.phone_number AS agency_phone,
   				  	languages.language_arr 

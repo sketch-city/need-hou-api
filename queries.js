@@ -267,11 +267,11 @@ function updateProgram(program_data){
 							enforcement_request_policy = '${program_data.enforcement_request_policy}', 
 							cultural_competency_offered = '${program_data.cultural_competency_offered}',
 							schedule = '${JSON.stringify(program_data.schedule)}',
-							source = '${program_data.source}'
+							source = '${program_data.source}',
+							latitude = ${program_data.latitude},
+							longitude = ${program_data.longitude}
 							WHERE id = '${program_data.id}';`
 
-
-		
 
 	console.log(query_str)
 	return db.none(query_str)
@@ -328,7 +328,9 @@ function createProgram(program_data){
 											enforcement_request_policy,
 											cultural_competency_offered,
 											schedule,
-											source
+											source,
+											latitude,
+											longitude
 											)
 					VALUES( '${program_data.agency_id}',
 							'${program_data.id}',
@@ -378,7 +380,9 @@ function createProgram(program_data){
 							'${program_data.enforcement_request_policy}', 
 							'${program_data.cultural_competency_offered}',
 							'${JSON.stringify(program_data.schedule)}',
-							'${program_data.source}'
+							'${program_data.source}',
+							${program_data.latitude},
+							${program_data.longitude}
 							);`
 	console.log(query_str)
 	return db.none(query_str)

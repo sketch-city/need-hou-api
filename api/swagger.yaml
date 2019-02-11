@@ -718,9 +718,9 @@ definitions:
       transportation:
         type: "string"
       latitude:
-        type: "string"
+        type: "number"
       longitude:
-        type: "string"
+        type: "number"
       service_area:
         type: "string"
       waitlist_wait:
@@ -840,7 +840,7 @@ definitions:
       holiday_schedule: ""
       transportation: ""
       contact_phone: ""
-      latitude: 45.67
+      latitude: 5.67
       longitude: 76.65
       service_area: "Near Northside"
       waitlist_wait: "5"

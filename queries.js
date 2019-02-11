@@ -271,8 +271,8 @@ function updateProgram(program_data){
 							cultural_competency_offered = '${program_data.cultural_competency_offered}',
 							schedule = '${JSON.stringify(program_data.schedule)}',
 							source = '${program_data.source}',
-							latitude = ${program_data.latitude},
-							longitude = ${program_data.longitude},
+							latitude = '${program_data.latitude}',
+							longitude = '${program_data.longitude}',
 							a2s_verified = ${program_data.a2s_verified}
 							WHERE id = '${program_data.id}';`
 
@@ -386,8 +386,8 @@ function createProgram(program_data){
 							'${program_data.cultural_competency_offered}',
 							'${JSON.stringify(program_data.schedule)}',
 							'${program_data.source}',
-							${program_data.latitude},
-							${program_data.longitude},
+							'${program_data.latitude}',
+							'${program_data.longitude}',
 							${program_data.a2s_verified}
 							);`
 	console.log(query_str)

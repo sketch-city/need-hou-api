@@ -659,6 +659,8 @@ definitions:
         type: "string"
       website:
         type: "string"
+      a2s_verified:
+        type: "boolean"
     example:
       physical_address: "physical_address"
       mailing_address: "mailing_address"
@@ -669,6 +671,7 @@ definitions:
       phone_number: "phone_number"
       id: "id"
       website: "website"
+      a2s_verified: false
   ProgramModel:
     type: "object"
     properties:
@@ -794,6 +797,8 @@ definitions:
         type: "string"
       cultural_competency_offered:
         type: "string"
+      a2s_verified:
+        type: "boolean"
       schedule:
         type: "object"
         properties:
@@ -879,6 +884,7 @@ definitions:
       consultation_opportunity: "Yes"
       enforcement_request_policy: "No"
       cultural_competency_offered: "Yes"
+      a2s_verified: false
 
   QueueModel:
     type: "object"

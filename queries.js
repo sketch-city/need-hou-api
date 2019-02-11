@@ -132,7 +132,8 @@ function createAgency(agency_data){
 											phone_number,
 											hours, 
 											website,
-											source)
+											source,
+											a2s_verified)
 					VALUES( '${agency_data.id}',
 							'${agency_data.name}',
 							'${agency_data.description}',
@@ -142,7 +143,8 @@ function createAgency(agency_data){
 							'${agency_data.phone_number}',
 							'${agency_data.hours}',
 							'${agency_data.website}',
-							'${agency_data.source}'
+							'${agency_data.source}',
+							${agency_data.a2s_verified}
 							);`
 	console.log(query_str)
 	return db.none(query_str)
@@ -207,7 +209,8 @@ function updateAgency(agency_data){
 			phone_number = '${agency_data.phone_number}',
 			hours = '${agency_data.hours}',
 			website = '${agency_data.website}',
-			source = '${agency_data.source}'
+			source = '${agency_data.source}',
+			a2s_verified = ${agency_data.a2s_verified}
 		WHERE id = '${agency_data.id}';`
 
 	console.log(query_str)
@@ -269,7 +272,8 @@ function updateProgram(program_data){
 							schedule = '${JSON.stringify(program_data.schedule)}',
 							source = '${program_data.source}',
 							latitude = ${program_data.latitude},
-							longitude = ${program_data.longitude}
+							longitude = ${program_data.longitude},
+							a2s_verified = ${program_data.a2s_verified}
 							WHERE id = '${program_data.id}';`
 
 
@@ -330,7 +334,8 @@ function createProgram(program_data){
 											schedule,
 											source,
 											latitude,
-											longitude
+											longitude,
+											a2s_verified
 											)
 					VALUES( '${program_data.agency_id}',
 							'${program_data.id}',
@@ -382,7 +387,8 @@ function createProgram(program_data){
 							'${JSON.stringify(program_data.schedule)}',
 							'${program_data.source}',
 							${program_data.latitude},
-							${program_data.longitude}
+							${program_data.longitude},
+							${program_data.a2s_verified}
 							);`
 	console.log(query_str)
 	return db.none(query_str)

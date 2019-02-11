@@ -718,9 +718,9 @@ definitions:
       transportation:
         type: "string"
       latitude:
-        type: "number"
+        type: "string"
       longitude:
-        type: "number"
+        type: "string"
       service_area:
         type: "string"
       waitlist_wait:

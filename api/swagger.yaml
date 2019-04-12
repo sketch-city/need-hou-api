@@ -799,6 +799,8 @@ definitions:
         type: "string"
       a2s_verified:
         type: "boolean"
+      disaster_only:
+        type: "boolean"
       schedule:
         type: "object"
         properties:
@@ -885,6 +887,7 @@ definitions:
       enforcement_request_policy: "No"
       cultural_competency_offered: "Yes"
       a2s_verified: false
+      disaster_only: false
 
   QueueModel:
     type: "object"

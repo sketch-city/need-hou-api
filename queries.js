@@ -273,7 +273,8 @@ function updateProgram(program_data){
 							source = '${program_data.source}',
 							latitude = ${program_data.latitude},
 							longitude = ${program_data.longitude},
-							a2s_verified = ${program_data.a2s_verified}
+							a2s_verified = ${program_data.a2s_verified},
+							disaster_only = ${program_data.disaster_only}
 							WHERE id = '${program_data.id}';`
 
 
@@ -335,7 +336,8 @@ function createProgram(program_data){
 											source,
 											latitude,
 											longitude,
-											a2s_verified
+											a2s_verified,
+											disaster_only
 											)
 					VALUES( '${program_data.agency_id}',
 							'${program_data.id}',
@@ -388,7 +390,8 @@ function createProgram(program_data){
 							'${program_data.source}',
 							${program_data.latitude},
 							${program_data.longitude},
-							${program_data.a2s_verified}
+							${program_data.a2s_verified},
+							${program_data.disaster_only}
 							);`
 	console.log(query_str)
 	return db.none(query_str)
